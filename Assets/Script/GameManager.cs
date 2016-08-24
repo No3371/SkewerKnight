@@ -6,12 +6,12 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance;
 
-    public GameObject MainCamera;
-
+    public GameObject MainCamera, Character;
+    
     public AchievementsData achievementData;
 
     public int Score;
-    public float ScrollSpeed, BaseSpeed; //Character moving speed, based on difficulty
+    public float ScrollSpeed, BaseSpeed =4f; //Character moving speed, based on difficulty
     float Difficulty, DifficultyModifer = 1.0f; //Difficulty scale based on Score and Game time
 
     float GameStartTime;

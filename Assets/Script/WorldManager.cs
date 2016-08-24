@@ -21,6 +21,7 @@ public class WorldManager : MonoBehaviour {
     public float SpawnPosX = 0, GroundY = 0;
     public float TileWidth = 2.73f;
 
+    public int SpawnBurst = 3;
     public float ObjectSpawnModifer = 1f; //唯正
     public float ObjectSpawnThreshold = 3f;
     public float SpawnThreshold = 10f;

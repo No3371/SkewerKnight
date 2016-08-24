@@ -42,10 +42,10 @@ public class Character : MonoBehaviour {
 			else if(transform.position.y >= top) state = "jd";
 		}
 		else if(state == "jd") {
-			if(transform.position.y > Basicy) {
+			if(transform.position.y >= Basicy) {
 				transform.Translate(Vector3.down * jspeed * Time.deltaTime);
 			}
-			else if(transform.position.y <= Basicy) {
+			else if(transform.position.y < Basicy) {
 				transform.position = new Vector2(transform.position.x,Basicy);
 				state = "n";
 				moving = false;

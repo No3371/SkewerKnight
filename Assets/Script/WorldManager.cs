@@ -7,27 +7,30 @@ public class WorldManager : MonoBehaviour {
     public static WorldManager Instance;
 
     public GameObject World;
-
-    public GameObject Prefab_BGTile, Prefab_GTile, Prefab_Cloud;
-    string BGSpritePath = "Tiles/BG", GSpritePath = "Tiles/G", CSpritePath = "Tiles/Cloud";
+    
+    List<Sprite> GList = new List<Sprite>();
+    List<Sprite> CList = new List<Sprite>();
+    List<Sprite> DList = new List<Sprite>();
+    public GameObject Prefab_GTile, Prefab_Cloud, Prefab_Deco;
+    string GSpritePath = "Tiles/G";
+    string CSpritePath = "Tiles/Cloud";
+    string DSpritePath = "Tiles/Deco";
     public List<GameObject> Prefab_Objects;
 
     float LastObjectSpawnTime;
-    public float SpawnPosX = 0, DespawnPosX, GroundY;
-    public float TileWidth = 2.73f, TileHeight = 0.57f;
+    public float SpawnPosX = 0, GroundY = 0;
+    public float TileWidth = 2.73f;
 
-    public int SpawnBurst = 5;
     public float ObjectSpawnModifer = 1f; //唯正
     public float ObjectSpawnThreshold = 3f;
-    public float SpawnThreshold = 5f;
+    public float SpawnThreshold = 10f;
 
     // Use this for initialization
     void Start () {
         if (Instance == null) Instance = this;
         if (Instance != this) Destroy(this);
         DontDestroyOnLoad(this);
-        
-        BGList = GList = new List<Sprite>();
+
         LoadResources();
         World = this.gameObject;
     }
@@ -37,13 +40,15 @@ public class WorldManager : MonoBehaviour {
         if (Mathf.Abs(GameManager.Instance.MainCamera.transform.position.x - SpawnPosX) < SpawnThreshold) SpawnTile();
 	}
 
-    List<Sprite> BGList, GList, CList;
 
     void LoadResources()
     {
-        BGList.AddRange(Resources.LoadAll<Sprite>(BGSpritePath));
         GList.AddRange(Resources.LoadAll<Sprite>(GSpritePath));
         CList.AddRange(Resources.LoadAll<Sprite>(CSpritePath));
+        DList.AddRange(Resources.LoadAll<Sprite>(DSpritePath));
+        Debug.Log("GLIst: " + GList.Count);
+        Debug.Log("CLIst: " + CList.Count);
+        Debug.Log("DLIst: " + DList.Count);
     }
 
 
@@ -52,24 +57,40 @@ public class WorldManager : MonoBehaviour {
         Debug.Log("Spawning tiles.");
         for (int i = 0; i < SpawnBurst; i++)
         {
-            GameObject temp = (GameObject)GameObject.Instantiate(Prefab_BGTile, new Vector2(SpawnPosX, Prefab_BGTile.transform.position.y), new Quaternion());
-            temp.GetComponent<SpriteRenderer>().sprite = BGList[Random.Range(0, BGList.Count)];
-            temp.transform.SetParent(World.transform);
-            temp = (GameObject)GameObject.Instantiate(Prefab_GTile, new Vector2(SpawnPosX, Prefab_GTile.transform.position.y), new Quaternion());
+            GameObject temp = (GameObject)GameObject.Instantiate(Prefab_GTile, new Vector2(SpawnPosX, GroundY), new Quaternion());
             temp.GetComponent<SpriteRenderer>().sprite = GList[Random.Range(0, GList.Count)];
             temp.transform.SetParent(World.transform);
 
             SpawnPosX += TileWidth;
+            for(int j = 0; j < Random.Range(0, 3); j++)
+                SpawnCloud();
+            for (int j = 0; j < Random.Range(0, 3); j++)
+                SpawnDeco();
         }
     }
 
     float LastCloudSpawnTime;
-    float CloudSpawnRate = 0.3f;
+    float CloudSpawnRate = 0.4f;
     void SpawnCloud()
     {
-        GameObject temp = (GameObject)GameObject.Instantiate(Prefab_Cloud, new Vector2(SpawnPosX, Prefab_BGTile.transform.position.y + Random.Range(-1f, 1.5f)), new Quaternion());
-        temp.GetComponent<SpriteRenderer>().sprite = CList[Random.Range(0, CList.Count)];
-        temp.transform.SetParent(World.transform);
+        if (Time.time - LastCloudSpawnTime > 0.5f && Random.Range(0f, 1f) < CloudSpawnRate)
+        {
+            GameObject temp = (GameObject)GameObject.Instantiate(Prefab_Cloud, new Vector2(SpawnPosX + Random.Range(-4f, 4f), GroundY + Random.Range(3f, 5f)), new Quaternion());
+            temp.GetComponent<SpriteRenderer>().sprite = CList[Random.Range(0, CList.Count)];
+            temp.transform.SetParent(World.transform);
+        }
+    }
+
+    float LastDecoSpawnTime;
+    float DecoSpawnRate = 0.7f;
+    void SpawnDeco()
+    {
+        if (Time.time - LastDecoSpawnTime > 0.5f && Random.Range(0f, 1f) < DecoSpawnRate)
+        {
+            GameObject temp = (GameObject)GameObject.Instantiate(Prefab_Deco, new Vector2(SpawnPosX + Random.Range(-2f, 2f), GroundY), new Quaternion());
+            temp.GetComponent<SpriteRenderer>().sprite = DList[Random.Range(0, DList.Count)];
+            temp.transform.SetParent(World.transform);
+        }
     }
 
     void SpawnObject(int type)
@@ -78,9 +99,8 @@ public class WorldManager : MonoBehaviour {
         {
             if(Random.Range(0f, 100f) < Mathf.Pow(Mathf.Abs(Time.time - LastObjectSpawnTime), 2) * ObjectSpawnModifer)
             {
-                int tempID = Random.Range(0, Prefab_Objects.Count);
-                GameObject temp = GameObject.Instantiate(Prefab_Objects[tempID]);
-                temp.transform.position = new Vector2(SpawnPosX, Prefab_Objects[tempID].transform.position.y);
+                GameObject temp = GameObject.Instantiate(Prefab_Objects[type]);
+                temp.transform.position = new Vector2(SpawnPosX, GroundY);
             }
         }
     }

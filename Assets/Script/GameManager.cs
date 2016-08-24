@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     public AchievementsData achievementData;
 
     public int Score;
-    public float ScrollSpeed, BaseSpeed = 4.0f; //Character moving speed, based on difficulty
+    public float ScrollSpeed, BaseSpeed; //Character moving speed, based on difficulty
     float Difficulty, DifficultyModifer = 1.0f; //Difficulty scale based on Score and Game time
 
     float GameStartTime;
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
 
     float UpdateDifficulty()
     {
-        return (Score / 250) * 0.5f + (Time.time - GameStartTime) / 10 * 0.5f;
+        return (Score / 1000) * 0.5f + (Time.time - GameStartTime) / 10 * 0.5f;
     }
 
     void RecordAdd(int i) //Add new caught mob id to the record string, if record is longer then 5, CheckAchievemrnt().
@@ -57,7 +57,6 @@ public class GameManager : MonoBehaviour {
     }
 
     List<int> Achieved;
-    List<int[]> achievementList;
 
     void CheckAchievement(string str) //Take the first 5 chracter in the record string and verify with Achievement Database
     {
@@ -66,36 +65,22 @@ public class GameManager : MonoBehaviour {
         {
             Count[int.Parse(str.Substring(0, 1))] += 1;
         }
-
-        for(int i = 0; i < achievementList.Count; i++)
+        foreach(AchievementsData.Achievement a in achievementData.List)
         {
-            if (Count == achievementList[i])
-            {
-                Debug.Log("Achieved: " + achievementData.List[i].Name);
-                Achieved.Add(i);
-            }
-        }
-    }
-
-    void GenerateAchievementList()
-    {
-        foreach (AchievementsData.Achievement a in achievementData.List)
-        {
+            int AId = 0;
             int[] count = { 0, 0, 0, 0, 0, 0, 0 };
-            
-            for (int i = 0; i < a.Code.Length; i++)
+            while (str.Length > 0)
             {
-                count[int.Parse(a.Code.Substring(i, i + 1))] += 1;
+                Count[int.Parse(str.Substring(0, 1))] += 1;
             }
 
-            achievementList.Add(count);
+            if(count == Count)
+            {
+                Debug.Log("Achieved: " + a.Name);
+                Achieved.Add(AId);
+            }
+
+            AId++;
         }
-
-
-    }
-
-    void GameOver()
-    {
-
     }
 }

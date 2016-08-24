@@ -16,7 +16,7 @@ public class WorldManager : MonoBehaviour {
 
     float LastObjectSpawnTime;
     public float SpawnPosX = 0, DespawnPosX, GroundY;
-    public float TileWidth = 2.73f, TileHeight = 0.57f;
+    public float TileWidth = 2.73f;
 
     public int SpawnBurst = 3;
     public float ObjectSpawnModifer = 1f; //唯正
@@ -53,10 +53,10 @@ public class WorldManager : MonoBehaviour {
         Debug.Log("Spawning tiles.");
         for (int i = 0; i < SpawnBurst; i++)
         {
-            GameObject temp = (GameObject)GameObject.Instantiate(Prefab_BGTile, new Vector2(SpawnPosX, GroundY - TileHeight/2), new Quaternion());
+            GameObject temp = (GameObject)GameObject.Instantiate(Prefab_BGTile, new Vector2(SpawnPosX, GroundY), new Quaternion());
             temp.GetComponent<SpriteRenderer>().sprite = BGList[Random.Range(0, BGList.Count)];
             temp.transform.SetParent(World.transform);
-            temp = (GameObject)GameObject.Instantiate(Prefab_GTile, new Vector2(SpawnPosX, GroundY - TileHeight / 2), new Quaternion());
+            temp = (GameObject)GameObject.Instantiate(Prefab_GTile, new Vector2(SpawnPosX, GroundY), new Quaternion());
             temp.GetComponent<SpriteRenderer>().sprite = GList[Random.Range(0, GList.Count)];
             temp.transform.SetParent(World.transform);
 

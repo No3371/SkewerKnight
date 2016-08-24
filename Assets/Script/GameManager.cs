@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour {
     }
 
     List<int> Achieved;
+    List<int[]> achievementList;
 
     void CheckAchievement(string str) //Take the first 5 chracter in the record string and verify with Achievement Database
     {
@@ -65,23 +66,32 @@ public class GameManager : MonoBehaviour {
         {
             Count[int.Parse(str.Substring(0, 1))] += 1;
         }
-        foreach(AchievementsData.Achievement a in achievementData.List)
+
+        for(int i = 0; i < achievementList.Count; i++)
         {
-            int AId = 0;
-            int[] count = { 0, 0, 0, 0, 0, 0, 0 };
-            while (str.Length > 0)
+            if (Count == achievementList[i])
             {
-                Count[int.Parse(str.Substring(0, 1))] += 1;
+                Debug.Log("Achieved: " + achievementData.List[i].Name);
+                Achieved.Add(i);
             }
-
-            if(count == Count)
-            {
-                Debug.Log("Achieved: " + a.Name);
-                Achieved.Add(AId);
-            }
-
-            AId++;
         }
+    }
+
+    void GenerateAchievementList()
+    {
+        foreach (AchievementsData.Achievement a in achievementData.List)
+        {
+            int[] count = { 0, 0, 0, 0, 0, 0, 0 };
+            
+            for (int i = 0; i < a.Code.Length; i++)
+            {
+                count[int.Parse(a.Code.Substring(i, i + 1))] += 1;
+            }
+
+            achievementList.Add(count);
+        }
+
+
     }
 
     void GameOver()

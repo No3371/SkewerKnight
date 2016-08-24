@@ -16,7 +16,7 @@ public class WorldManager : MonoBehaviour {
 
     float LastObjectSpawnTime;
     public float SpawnPosX = 0, DespawnPosX, GroundY;
-    float TileWidth = 1f;
+    public float TileWidth = 2.73f;
 
     public int SpawnBurst = 3;
     public float ObjectSpawnModifer = 1f; //唯正

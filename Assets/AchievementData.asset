@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d5ec108fa2b1548be00c65909caf5c, type: 3}
+  m_Name: AchievementData
+  m_EditorClassIdentifier: 
+  List:
+  - Name: e5889de99fb3e58faae698afe5808be8bb9fe9ab94
+    Code: 3636
+  - Name: e5889de99fb3e58faae698afe5808be8bb9fe9ab94
+    Code: 3637
+  - Name: e5889de99fb3e58faae698afe5808be8bb9fe9ab94
+    Code: 3737
+  - Name: e5b091e5a5b3e69982e4bba3
+    Code: 3131313131
+  - Name: e998bfe5a986e990b5e89b8b
+    Code: 3232323232
+  - Name: e4b88de88081e6ada7e8a696
+    Code: 3333333333
+  - Name: e6a593e4b98be8b0b7
+    Code: 3434343434
+  - Name: e5b181e5ada9e6938ae6aebae88085
+    Code: 3535353535
+  - Name: e794b7e696b9e59b9be6bfbae5aea2
+    Code: 3131313132
+  - Name: e88081e4b88de4bc91
+    Code: 3131313133
+  - Name: e4b9b3e5ad90e58fafe4baa4e4b99f
+    Code: 3131313134
+  - Name: e5bc9fe5bc9fe4bda0e5a5bde58fafe6849b
+    Code: 3131313135
+  - Name: e4b880e69cb5e9aeaee88ab1e68f92e59ca8e7899be7b39ee4b88a
+    Code: 3232323231
+  - Name: e4bba3e4bba3e79bb8e9adafefbc91
+    Code: 3232323233
+  - Name: e588a5e5838fe593a5e593a5e4b880e6a8a3efbc91
+    Code: 3232323234
+  - Name: e59b9be59da8e5a4a7e99bb7e58c85
+    Code: 3232323235
+  - Name: e88081e6bca2e68ea8e8bb8a
+    Code: 3333333331
+  - Name: e4bba3e4bba3e79bb8e9adafefbc92
+    Code: 3333333332
+  - Name: e590abe9a3b4e5bc84e5adab
+    Code: 3333333334
+  - Name: e7aba5e5bf83e69caae6b3af
+    Code: 3333333335
+  - Name: e5a790e5a790e7b5a6e899a7e5978e
+    Code: 3434343431
+  - Name: e588a5e5838fe593a5e593a5e4b880e6a8a3efbc92
+    Code: 3434343432
+  - Name: e590abe8b2bde8a2abe5adabe5bc84
+    Code: 3434343433
+  - Name: e696b0e6a593e4b98be8b0b7
+    Code: 3434343435
+  - Name: e7b297e5a5b6e78ea9
+    Code: 3535353531
+  - Name: e6ada1e8bf8ee4be86e588b0e58face5969ae5b3bde8b0b7
+    Code: 3535353532
+  - Name: e5b9abefbcb1efbcb1
+    Code: 3535353533
+  - Name: e9be8de4b98be8b0b7
+    Code: 3535353534

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     public AchievementsData achievementData;
 
     public int Score;
-    public float ScrollSpeed, BaseSpeed; //Character moving speed, based on difficulty
+    public float ScrollSpeed, BaseSpeed = 4.0f; //Character moving speed, based on difficulty
     float Difficulty, DifficultyModifer = 1.0f; //Difficulty scale based on Score and Game time
 
     float GameStartTime;
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
 
     float UpdateDifficulty()
     {
-        return (Score / 1000) * 0.5f + (Time.time - GameStartTime) / 10 * 0.5f;
+        return (Score / 250) * 0.5f + (Time.time - GameStartTime) / 10 * 0.5f;
     }
 
     void RecordAdd(int i) //Add new caught mob id to the record string, if record is longer then 5, CheckAchievemrnt().
@@ -82,5 +82,10 @@ public class GameManager : MonoBehaviour {
 
             AId++;
         }
+    }
+
+    void GameOver()
+    {
+
     }
 }

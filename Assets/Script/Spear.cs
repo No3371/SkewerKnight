@@ -22,7 +22,7 @@ public class Spear : MonoBehaviour {
 
 		//public float slope = mathf.atan2()
 		character = GameObject.FindWithTag("character");
-		transform.position = new Vector2(character.transform.position.x - 0.43f,character.transform.position.y + 0.72f);
+		transform.position = new Vector2(character.transform.position.x - 0.23f ,character.transform.position.y + 0.72f);
 	}
 
 	void FixedUpdate() {

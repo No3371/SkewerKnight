@@ -18,10 +18,10 @@ public class WorldManager : MonoBehaviour {
     public float SpawnPosX = 0, DespawnPosX, GroundY;
     public float TileWidth = 2.73f, TileHeight = 0.57f;
 
-    public int SpawnBurst = 3;
+    public int SpawnBurst = 5;
     public float ObjectSpawnModifer = 1f; //唯正
     public float ObjectSpawnThreshold = 3f;
-    public float SpawnThreshold = 3f;
+    public float SpawnThreshold = 5f;
 
     // Use this for initialization
     void Start () {
@@ -53,10 +53,10 @@ public class WorldManager : MonoBehaviour {
         Debug.Log("Spawning tiles.");
         for (int i = 0; i < SpawnBurst; i++)
         {
-            GameObject temp = (GameObject)GameObject.Instantiate(Prefab_BGTile, new Vector2(SpawnPosX, GroundY - TileHeight/2), new Quaternion());
+            GameObject temp = (GameObject)GameObject.Instantiate(Prefab_BGTile, new Vector2(SpawnPosX, Prefab_BGTile.transform.position.y), new Quaternion());
             temp.GetComponent<SpriteRenderer>().sprite = BGList[Random.Range(0, BGList.Count)];
             temp.transform.SetParent(World.transform);
-            temp = (GameObject)GameObject.Instantiate(Prefab_GTile, new Vector2(SpawnPosX, GroundY - TileHeight / 2), new Quaternion());
+            temp = (GameObject)GameObject.Instantiate(Prefab_GTile, new Vector2(SpawnPosX, Prefab_GTile.transform.position.y), new Quaternion());
             temp.GetComponent<SpriteRenderer>().sprite = GList[Random.Range(0, GList.Count)];
             temp.transform.SetParent(World.transform);
 
@@ -70,7 +70,9 @@ public class WorldManager : MonoBehaviour {
         {
             if(Random.Range(0f, 100f) < Mathf.Pow(Mathf.Abs(Time.time - LastObjectSpawnTime), 2) * ObjectSpawnModifer)
             {
-                GameObject.Instantiate(Prefab_Objects[Random.Range(0, Prefab_Objects.Count)], new Vector2(SpawnPosX, GroundY), new Quaternion());
+                int tempID = Random.Range(0, Prefab_Objects.Count);
+                GameObject temp = GameObject.Instantiate(Prefab_Objects[tempID]);
+                temp.transform.position = new Vector2(SpawnPosX, Prefab_Objects[tempID].transform.position.y);
             }
         }
     }

@@ -503,7 +503,7 @@ PlayerSettings:
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
   additionalIl2CppArgs::additionalIl2CppArgs: 
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudProjectId: f531d6e8-0a96-4e1f-b25a-0bc1fb3f1983
+  projectName: SkewerKnight
+  organizationId: m9731526
   cloudEnabled: 0

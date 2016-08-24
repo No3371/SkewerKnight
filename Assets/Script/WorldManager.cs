@@ -8,10 +8,8 @@ public class WorldManager : MonoBehaviour {
 
     public GameObject World;
 
-    public GameObject Prefab_BGTile;
-    public GameObject Prefab_GTile;
-    string BGSpritePath = "Tiles/BG";
-    string GSpritePath = "Tiles/G";
+    public GameObject Prefab_BGTile, Prefab_GTile, Prefab_Cloud;
+    string BGSpritePath = "Tiles/BG", GSpritePath = "Tiles/G", CSpritePath = "Tiles/Cloud";
     public List<GameObject> Prefab_Objects;
 
     float LastObjectSpawnTime;
@@ -39,12 +37,13 @@ public class WorldManager : MonoBehaviour {
         if (Mathf.Abs(GameManager.Instance.MainCamera.transform.position.x - SpawnPosX) < SpawnThreshold) SpawnTile();
 	}
 
-    List<Sprite> BGList, GList;
+    List<Sprite> BGList, GList, CList;
 
     void LoadResources()
     {
         BGList.AddRange(Resources.LoadAll<Sprite>(BGSpritePath));
         GList.AddRange(Resources.LoadAll<Sprite>(GSpritePath));
+        CList.AddRange(Resources.LoadAll<Sprite>(CSpritePath));
     }
 
 
@@ -62,6 +61,15 @@ public class WorldManager : MonoBehaviour {
 
             SpawnPosX += TileWidth;
         }
+    }
+
+    float LastCloudSpawnTime;
+    float CloudSpawnRate = 0.3f;
+    void SpawnCloud()
+    {
+        GameObject temp = (GameObject)GameObject.Instantiate(Prefab_Cloud, new Vector2(SpawnPosX, Prefab_BGTile.transform.position.y + Random.Range(-1f, 1.5f)), new Quaternion());
+        temp.GetComponent<SpriteRenderer>().sprite = CList[Random.Range(0, CList.Count)];
+        temp.transform.SetParent(World.transform);
     }
 
     void SpawnObject(int type)

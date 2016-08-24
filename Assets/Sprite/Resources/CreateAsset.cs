@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
 
 public class CreateAsset : MonoBehaviour {
@@ -15,3 +16,5 @@ public class CreateAsset : MonoBehaviour {
         Selection.activeObject = asset;
     }
 }
+
+#endif

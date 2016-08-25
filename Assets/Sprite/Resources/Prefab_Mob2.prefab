@@ -9,19 +9,33 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
+<<<<<<< HEAD
   m_RootGameObject: {fileID: 1000010105972754}
   m_IsPrefabParent: 1
 --- !u!1 &1000010105972754
+=======
+  m_RootGameObject: {fileID: 1000010387505970}
+  m_IsPrefabParent: 1
+--- !u!1 &1000010387505970
+>>>>>>> origin/master
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
+<<<<<<< HEAD
   - 4: {fileID: 4000013953072024}
   - 212: {fileID: 212000013484160064}
   - 114: {fileID: 114000013124596000}
   - 95: {fileID: 95000013444053784}
+=======
+  - 4: {fileID: 4000011915234450}
+  - 212: {fileID: 212000014129738494}
+  - 114: {fileID: 114000013065837486}
+  - 95: {fileID: 95000012539827512}
+  - 61: {fileID: 61000011059885962}
+>>>>>>> origin/master
   m_Layer: 0
   m_Name: Prefab_Mob2
   m_TagString: Untagged
@@ -29,26 +43,58 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!4 &4000013953072024
+=======
+--- !u!4 &4000011915234450
+>>>>>>> origin/master
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1000010105972754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+=======
+  m_GameObject: {fileID: 1000010387505970}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.447, y: 0.328, z: 0}
+>>>>>>> origin/master
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+<<<<<<< HEAD
 --- !u!95 &95000013444053784
+=======
+--- !u!61 &61000011059885962
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010387505970}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.046524376, y: -0.06418896}
+  serializedVersion: 2
+  m_Size: {x: 0.4761244, y: 0.66324484}
+--- !u!95 &95000012539827512
+>>>>>>> origin/master
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1000010105972754}
+=======
+  m_GameObject: {fileID: 1000010387505970}
+>>>>>>> origin/master
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 32951a6ea4c694c508ca702f6b500e0a, type: 2}
@@ -59,12 +105,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+<<<<<<< HEAD
 --- !u!114 &114000013124596000
+=======
+--- !u!114 &114000013065837486
+>>>>>>> origin/master
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1000010105972754}
+=======
+  m_GameObject: {fileID: 1000010387505970}
+>>>>>>> origin/master
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971182fc4d94d4d86967540b6d5df47b, type: 3}
@@ -74,12 +128,21 @@ MonoBehaviour:
   isCaught: 0
   PostionOnSpear: 0
   Volume: 0
+<<<<<<< HEAD
 --- !u!212 &212000013484160064
+=======
+  Spear: {fileID: 0}
+--- !u!212 &212000014129738494
+>>>>>>> origin/master
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1000010105972754}
+=======
+  m_GameObject: {fileID: 1000010387505970}
+>>>>>>> origin/master
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

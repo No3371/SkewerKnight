@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-guid: 2800098cb542547fbaa667544833e646
-timeCreated: 1472056569
+guid: f98d149198838ed44b61f95f0c8254d5
+timeCreated: 1472054836
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bend_over_0
-    21300002: bend_over_1
-    21300004: bend_over_2
-    21300006: bend_over_3
+    21300000: Door_0
+    21300002: Door_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,10 +28,10 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -50,64 +48,48 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    serializedVersion: 2
     sprites:
-    - serializedVersion: 2
-      name: bend_over_0
+    - name: Door_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 369
-        height: 192
+        width: 85
+        height: 139
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bend_over_1
+      outline:
+      - - {x: -42.5, y: 69.5}
+        - {x: -42.5, y: -69.5}
+        - {x: 3.5, y: -69.5}
+        - {x: 24.5, y: 30.5}
+        - {x: 24.5, y: 69.5}
+    - name: Door_1
       rect:
         serializedVersion: 2
-        x: 369
+        x: 85
         y: 0
-        width: 369
-        height: 192
+        width: 85
+        height: 139
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bend_over_2
-      rect:
-        serializedVersion: 2
-        x: 738
-        y: 0
-        width: 369
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bend_over_3
-      rect:
-        serializedVersion: 2
-        x: 1107
-        y: 0
-        width: 369
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
+      outline:
+      - - {x: 16.5, y: 69.5}
+        - {x: 1.5, y: 40.5}
+        - {x: 1.5, y: -50.5}
+        - {x: 3.5, y: -69.5}
+        - {x: 42.5, y: -69.5}
+        - {x: 42.5, y: 69.5}
+      - - {x: 1.5, y: 31.5}
+        - {x: 4.5, y: 32.5}
+        - {x: 4.5, y: 35.5}
+        - {x: 1.5, y: 36.5}
+        - {x: -0.5, y: 34.5}
     outline: []
   spritePackingTag: 
   userData: 

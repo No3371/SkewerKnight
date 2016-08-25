@@ -390,6 +390,7 @@ MonoBehaviour:
   DespawnPosX: 0
   GroundY: 0
   TileWidth: 2.73
+  TileHeight: 0.57
   SpawnBurst: 3
   ObjectSpawnModifer: 1
   ObjectSpawnThreshold: 3
@@ -477,7 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 891058451}
-  achievementData: {fileID: 0}
+  achievementData: {fileID: 11400000, guid: d0be2bb3f1b8c814da750c4bd4b0dd68, type: 2}
   Score: 0
   ScrollSpeed: 0
   BaseSpeed: 0

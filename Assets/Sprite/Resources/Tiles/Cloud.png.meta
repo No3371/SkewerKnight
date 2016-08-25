@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 9eafee1ff074e49b1a8aaac29efa84eb
-timeCreated: 1472056915
+guid: 19c88e6e4ec97994d9543911907eb587
+timeCreated: 1472060579
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: jump_0
-    21300002: jump_1
-    21300004: jump_2
-    21300006: jump_3
-    21300008: jump_4
+    21300000: Cloud_0
+    21300002: Cloud_1
+    21300004: Cloud_2
+    21300006: Cloud_3
+    21300008: Cloud_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -31,10 +31,10 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -51,77 +51,79 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    serializedVersion: 2
     sprites:
-    - serializedVersion: 2
-      name: jump_0
+    - name: Cloud_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 369
-        height: 192
+        x: 2
+        y: 91
+        width: 42
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: jump_1
+    - name: Cloud_1
       rect:
         serializedVersion: 2
-        x: 369
-        y: 0
-        width: 369
-        height: 192
+        x: 48
+        y: 84
+        width: 38
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: jump_2
+    - name: Cloud_2
       rect:
         serializedVersion: 2
-        x: 738
-        y: 0
-        width: 369
-        height: 192
+        x: 95
+        y: 63
+        width: 68
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 21.5}
+        - {x: -30, y: 17.5}
+        - {x: -34, y: -1.5}
+        - {x: -34, y: -19.5}
+        - {x: -28, y: -21.5}
+        - {x: 34, y: -21.5}
+        - {x: 34, y: 0.5}
+        - {x: 23, y: 21.5}
+    - name: Cloud_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 36
+        width: 89
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29.5, y: 22}
+        - {x: -44.5, y: 16}
+        - {x: -44.5, y: -22}
+        - {x: 44.5, y: -22}
+        - {x: 44.5, y: 15}
+        - {x: 37.5, y: 22}
+    - name: Cloud_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 53
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: jump_3
-      rect:
-        serializedVersion: 2
-        x: 1107
-        y: 0
-        width: 369
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: jump_4
-      rect:
-        serializedVersion: 2
-        x: 1476
-        y: 0
-        width: 369
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

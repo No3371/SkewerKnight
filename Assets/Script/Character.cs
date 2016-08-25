@@ -2,36 +2,60 @@ using UnityEngine;
 using System.Collections;
 
 public class Character : MonoBehaviour {
-	public string state;
+
+    public enum CharacterState {
+        Normal,
+        Jumping,
+        Bending
+    }
+
+    CharacterState State;
+    
 	public bool moving;
 	public float jspeed = 0f;
 	public float top = 2f;
-	public float gravity = 5f;
-	public float JumpPower = 5f;
-	public float GrY = WorldManager.Instance.GroundY;
+	public float gravity = 7f;
+	public float JumpPower = 10f;
+	public float GrY;
+	public Animator animator;
+
 	// Use this for initialization
 	void Start () {
-		state = "n";
+		State = CharacterState.Normal;
 		moving = false;
-	}
+		animator = GetComponent<Animator>();
+
+        GrY = WorldManager.Instance.GroundY;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		//basic move
 		transform.Translate(Vector3.right * GameManager.Instance.ScrollSpeed * Time.deltaTime);
-		//end basic move
-		
-		//input
-		if(Input.GetKeyDown(KeyCode.Space) && !moving) {
-			state = "j";
-			jspeed = JumpPower;
+        //end basic move
+        
+        //input
+        if (Input.GetKeyDown(KeyCode.Space) && !moving) {
+            GameManager.Instance.MainCamera.GetComponent<CameraController>().LockY = true;
+            State = CharacterState.Jumping;
+            jspeed = JumpPower;
 			moving = true;
 			transform.Translate(Vector3.up * (jspeed - gravity) * Time.deltaTime);
 		}
-		else if(Input.GetKeyDown(KeyCode.Z) && !moving) {
-			state = "d";
-			moving = true;
-		}
+		if(Input.GetKey(KeyCode.S) && !moving)
+        {
+            Debug.Log("detected.");
+            State = CharacterState.Bending;
+            animator.SetBool("Bending", true);
+            moving = true;
+        }
+        //else
+        //{
+           // State = CharacterState.Normal;
+           // animator.SetBool("Bending", false);
+           // moving = false;
+        //}
 		//end input
 
 		//move execute
@@ -59,10 +83,12 @@ public class Character : MonoBehaviour {
 		if(transform.position.y > GrY) {
 			transform.Translate(Vector3.up * (jspeed - gravity) * Time.deltaTime);
 		}
-		if(state == "j") {
-			jspeed -= 0.1f;
-			if(this.transform.position.y <= GrY) {
-				state = "n";
+		if(State == CharacterState.Jumping) {
+			jspeed -= 0.14f;
+			if(this.transform.position.y <= GrY)
+            {
+                GameManager.Instance.MainCamera.GetComponent<CameraController>().LockY = false;
+                State = CharacterState.Normal;
 				moving = false;
 				jspeed = 0;
 				transform.position = new Vector2(transform.position.x,GrY);
@@ -71,15 +97,8 @@ public class Character : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-
+        if (other.gameObject.layer == 8) GameManager.Instance.GameOver();
     }
-
-	void jump() {
-
-	}
-
-	void down() {
-
-	}
+    
 
 }

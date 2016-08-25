@@ -6,13 +6,13 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance;
 
-    public GameObject MainCamera;
-
+    public GameObject MainCamera, Character;
+    
     public AchievementsData achievementData;
 
     public int Score;
-    public float ScrollSpeed, BaseSpeed; //Character moving speed, based on difficulty
-    float Difficulty, DifficultyModifer = 1.0f; //Difficulty scale based on Score and Game time
+    public float ScrollSpeed, BaseSpeed =4f; //Character moving speed, based on difficulty
+    float Difficulty, DifficultyModifer = 0.86f; //Difficulty scale based on Score and Game time
 
     float GameStartTime;
 
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
         GameStartTime = Time.time;
 
         Achieved = new List<int>();
+        StartCoroutine(ScoringByTime());
 	}
 	
 	// Update is called once per frame
@@ -38,7 +39,7 @@ public class GameManager : MonoBehaviour {
 
     float UpdateSpeed() //Update scorl speed accoring to current Difficulty.
     {
-        return BaseSpeed + (Difficulty * Difficulty) * DifficultyModifer;
+        return BaseSpeed + (Difficulty * Difficulty * DifficultyModifer * DifficultyModifer);
     }
 
     float UpdateDifficulty()
@@ -82,5 +83,11 @@ public class GameManager : MonoBehaviour {
 
             AId++;
         }
+    }
+
+    IEnumerator ScoringByTime()
+    {
+        Score += (int) ((Time.time - GameStartTime) * (Time.time - GameStartTime) / 30);
+        yield return new WaitForSeconds(1f);
     }
 }

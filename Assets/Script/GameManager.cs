@@ -7,12 +7,13 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance;
 
     public GameObject MainCamera, Character;
+    public GameObject GameOverScreen;
     
     public AchievementsData achievementData;
 
-    public int Score;
+    public int Score = 0;
     public float ScrollSpeed, BaseSpeed =4f; //Character moving speed, based on difficulty
-    float Difficulty, DifficultyModifer = 0.86f; //Difficulty scale based on Score and Game time
+    float Difficulty, DifficultyModifer = 0.74f; //Difficulty scale based on Score and Game time
 
     float GameStartTime;
 
@@ -87,7 +88,16 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator ScoringByTime()
     {
-        Score += (int) ((Time.time - GameStartTime) * (Time.time - GameStartTime) / 30);
-        yield return new WaitForSeconds(1f);
+        while (true)
+        {
+            Score += (int) ((Time.time - GameStartTime) * (Time.time - GameStartTime) / 30);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("GAME OVER.");
+        StopCoroutine(ScoringByTime());
     }
 }

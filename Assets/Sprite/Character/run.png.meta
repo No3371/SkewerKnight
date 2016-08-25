@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7041be43f30e04a748206700b7b06436
-timeCreated: 1472049304
+timeCreated: 1472064839
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -37,7 +37,7 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
     filterMode: 0
@@ -57,155 +57,426 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    serializedVersion: 2
     sprites:
-    - serializedVersion: 2
-      name: run_0
+    - name: run_0
       rect:
         serializedVersion: 2
         x: 0
         y: 960
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: run_1
+      outline:
+      - - {x: 93, y: 33}
+        - {x: 93, y: 32}
+        - {x: 95, y: 30}
+        - {x: 99, y: 27}
+        - {x: 130, y: 50}
+        - {x: 132, y: 56}
+        - {x: 132, y: 66}
+        - {x: 95, y: 138}
+        - {x: 62, y: 138}
+        - {x: 59, y: 100}
+        - {x: 59, y: -2}
+        - {x: 78, y: -2}
+        - {x: 97, y: 16}
+        - {x: 97, y: 22}
+        - {x: 93, y: 32}
+    - name: run_1
       rect:
         serializedVersion: 2
         x: 369
         y: 960
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: run_2
+      outline:
+      - - {x: 76, y: 15}
+        - {x: 76, y: 12}
+        - {x: 77, y: 7}
+        - {x: 97, y: -5}
+        - {x: 130, y: 51}
+        - {x: 132, y: 58}
+        - {x: 132, y: 67}
+        - {x: 96, y: 140}
+        - {x: 57, y: 140}
+        - {x: 49, y: 20}
+        - {x: 49, y: 1}
+        - {x: 55, y: -3}
+        - {x: 59, y: -5}
+        - {x: 63, y: -5}
+        - {x: 75, y: 5}
+        - {x: 74, y: 7}
+        - {x: 76, y: 14}
+    - name: run_2
       rect:
         serializedVersion: 2
         x: 0
         y: 768
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: run_3
+      outline:
+      - - {x: 95, y: 32}
+        - {x: 99, y: 29}
+        - {x: 130, y: 52}
+        - {x: 132, y: 58}
+        - {x: 132, y: 68}
+        - {x: 94, y: 142}
+        - {x: 59, y: 142}
+        - {x: 46, y: 87}
+        - {x: 46, y: -2}
+        - {x: 97, y: -2}
+        - {x: 105, y: 7}
+        - {x: 97, y: 26}
+        - {x: 93, y: 34}
+      - - {x: 63, y: 58}
+        - {x: 66, y: 59}
+        - {x: 66, y: 62}
+        - {x: 63, y: 63}
+        - {x: 61, y: 61}
+    - name: run_3
       rect:
         serializedVersion: 2
         x: 369
         y: 768
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: run_4
+      outline:
+      - - {x: 59, y: 13}
+        - {x: 55, y: 12}
+        - {x: 56, y: 12}
+        - {x: 53, y: 13}
+        - {x: 50, y: 13}
+        - {x: 50, y: -4}
+        - {x: 65, y: -4}
+        - {x: 70, y: -2}
+        - {x: 74, y: 5}
+        - {x: 74, y: 8}
+      - - {x: 132, y: 66}
+        - {x: 92, y: 137}
+        - {x: 70, y: 137}
+        - {x: 57, y: 135}
+        - {x: 48, y: 109}
+        - {x: 48, y: 7}
+        - {x: 57, y: -3}
+        - {x: 97, y: -3}
+        - {x: 101, y: 3}
+        - {x: 130, y: 51}
+        - {x: 132, y: 58}
+      - - {x: 63, y: 57}
+        - {x: 66, y: 58}
+        - {x: 66, y: 61}
+        - {x: 63, y: 62}
+        - {x: 61, y: 60}
+    - name: run_4
       rect:
         serializedVersion: 2
         x: 0
         y: 576
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: run_5
+      outline:
+      - - {x: 95, y: 31}
+        - {x: 95, y: 33}
+        - {x: 99, y: 31}
+        - {x: 112, y: 35}
+        - {x: 116, y: 45}
+        - {x: 130, y: 50}
+        - {x: 132, y: 56}
+        - {x: 132, y: 66}
+        - {x: 94, y: 138}
+        - {x: 69, y: 138}
+        - {x: 67, y: 137}
+        - {x: 67, y: 132}
+        - {x: 69, y: 127}
+        - {x: 59, y: 57}
+        - {x: 64, y: 56}
+        - {x: 67, y: 58}
+        - {x: 66, y: 57}
+        - {x: 65, y: 51}
+        - {x: 50, y: 18}
+        - {x: 50, y: 16}
+        - {x: 56, y: 11}
+        - {x: 58, y: 12}
+        - {x: 61, y: 15}
+        - {x: 59, y: 11}
+        - {x: 55, y: 10}
+        - {x: 56, y: 10}
+        - {x: 53, y: 11}
+        - {x: 50, y: 11}
+        - {x: 50, y: -5}
+        - {x: 54, y: -6}
+        - {x: 61, y: -6}
+        - {x: 91, y: -4}
+        - {x: 96, y: -4}
+        - {x: 96, y: 21}
+      - - {x: 93, y: 9}
+        - {x: 95, y: 7}
+        - {x: 98, y: 8}
+        - {x: 98, y: 11}
+        - {x: 96, y: 13}
+        - {x: 93, y: 12}
+      - - {x: 62, y: 125}
+        - {x: 65, y: 122}
+        - {x: 68, y: 123}
+        - {x: 68, y: 125}
+        - {x: 65, y: 128}
+        - {x: 63, y: 128}
+    - name: run_5
       rect:
         serializedVersion: 2
         x: 369
         y: 576
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: run_6
+      outline:
+      - - {x: 60, y: 140}
+        - {x: 56, y: 127}
+        - {x: 59, y: 13}
+        - {x: 55, y: 12}
+        - {x: 56, y: 12}
+        - {x: 53, y: 13}
+        - {x: 50, y: 13}
+        - {x: 50, y: -4}
+        - {x: 95, y: -4}
+        - {x: 132, y: 32}
+        - {x: 132, y: 74}
+        - {x: 103, y: 140}
+      - - {x: 88, y: 0}
+        - {x: 90, y: -2}
+        - {x: 93, y: -1}
+        - {x: 93, y: 2}
+        - {x: 91, y: 4}
+        - {x: 88, y: 3}
+      - - {x: 93, y: 11}
+        - {x: 95, y: 9}
+        - {x: 98, y: 10}
+        - {x: 98, y: 13}
+        - {x: 96, y: 15}
+        - {x: 93, y: 14}
+      - - {x: 52, y: 22}
+        - {x: 51, y: 21}
+        - {x: 51, y: 17}
+        - {x: 54, y: 14}
+        - {x: 58, y: 14}
+        - {x: 60, y: 15}
+        - {x: 60, y: 18}
+        - {x: 58, y: 21}
+        - {x: 54, y: 22}
+      - - {x: 63, y: 57}
+        - {x: 66, y: 58}
+        - {x: 66, y: 61}
+        - {x: 63, y: 62}
+        - {x: 61, y: 60}
+    - name: run_6
       rect:
         serializedVersion: 2
         x: 0
         y: 384
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: run_7
+      outline:
+      - - {x: 92, y: 139}
+        - {x: 60, y: 139}
+        - {x: 59, y: 138}
+        - {x: 62, y: 125}
+        - {x: 50, y: 41}
+        - {x: 50, y: -1}
+        - {x: 55, y: -5}
+        - {x: 69, y: -5}
+        - {x: 98, y: -1}
+        - {x: 132, y: 49}
+        - {x: 132, y: 81}
+      - - {x: 93, y: 13}
+        - {x: 95, y: 11}
+        - {x: 98, y: 12}
+        - {x: 98, y: 15}
+        - {x: 96, y: 17}
+        - {x: 93, y: 16}
+      - - {x: 52, y: 24}
+        - {x: 51, y: 23}
+        - {x: 51, y: 19}
+        - {x: 54, y: 16}
+        - {x: 58, y: 16}
+        - {x: 60, y: 17}
+        - {x: 60, y: 20}
+        - {x: 58, y: 23}
+        - {x: 54, y: 24}
+      - - {x: 63, y: 58}
+        - {x: 66, y: 59}
+        - {x: 66, y: 62}
+        - {x: 63, y: 63}
+        - {x: 61, y: 61}
+    - name: run_7
       rect:
         serializedVersion: 2
         x: 369
         y: 384
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: run_8
+      outline:
+      - - {x: 51, y: -3}
+        - {x: 53, y: -5}
+        - {x: 56, y: -4}
+        - {x: 56, y: -1}
+        - {x: 54, y: 1}
+        - {x: 51, y: 0}
+      - - {x: 66, y: -4}
+        - {x: 69, y: -3}
+        - {x: 69, y: 0}
+        - {x: 66, y: 1}
+        - {x: 64, y: -1}
+      - - {x: 47, y: -4}
+        - {x: 102, y: -4}
+        - {x: 132, y: 28}
+        - {x: 132, y: 82}
+        - {x: 109, y: 138}
+        - {x: 63, y: 138}
+        - {x: 52, y: 132}
+        - {x: 47, y: 61}
+      - - {x: 58, y: 5}
+        - {x: 59, y: 2}
+        - {x: 62, y: 2}
+        - {x: 66, y: 5}
+        - {x: 65, y: 8}
+        - {x: 62, y: 8}
+      - - {x: 63, y: 56}
+        - {x: 66, y: 57}
+        - {x: 66, y: 60}
+        - {x: 63, y: 61}
+        - {x: 61, y: 59}
+    - name: run_8
       rect:
         serializedVersion: 2
         x: 0
         y: 192
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: run_9
+      outline:
+      - - {x: 51, y: -1}
+        - {x: 53, y: -3}
+        - {x: 56, y: -2}
+        - {x: 56, y: 1}
+        - {x: 54, y: 3}
+        - {x: 51, y: 2}
+      - - {x: 93, y: 34}
+        - {x: 93, y: 33}
+        - {x: 95, y: 31}
+        - {x: 113, y: 25}
+        - {x: 132, y: 55}
+        - {x: 132, y: 75}
+        - {x: 93, y: 139}
+        - {x: 84, y: 141}
+        - {x: 73, y: 141}
+        - {x: 65, y: 139}
+        - {x: 60, y: 130}
+        - {x: 55, y: 68}
+        - {x: 55, y: 6}
+        - {x: 63, y: 0}
+        - {x: 77, y: -3}
+        - {x: 97, y: -3}
+        - {x: 97, y: 25}
+        - {x: 92, y: 30}
+      - - {x: 66, y: -2}
+        - {x: 69, y: -1}
+        - {x: 69, y: 2}
+        - {x: 66, y: 3}
+        - {x: 64, y: 1}
+      - - {x: 63, y: 57}
+        - {x: 66, y: 58}
+        - {x: 66, y: 61}
+        - {x: 63, y: 62}
+        - {x: 61, y: 60}
+    - name: run_9
       rect:
         serializedVersion: 2
         x: 369
         y: 192
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: run_10
+      outline:
+      - - {x: 61, y: 138}
+        - {x: 61, y: -3}
+        - {x: 93, y: -3}
+        - {x: 132, y: 57}
+        - {x: 132, y: 75}
+        - {x: 97, y: 138}
+      - - {x: 51, y: 2}
+        - {x: 53, y: 0}
+        - {x: 56, y: 1}
+        - {x: 56, y: 4}
+        - {x: 54, y: 6}
+        - {x: 51, y: 5}
+      - - {x: 85, y: 3}
+        - {x: 85, y: 1}
+        - {x: 87, y: 0}
+        - {x: 89, y: 0}
+        - {x: 91, y: 3}
+        - {x: 91, y: 5}
+        - {x: 88, y: 6}
+    - name: run_10
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
+      outline:
+      - - {x: 71, y: 137}
+        - {x: 67, y: 135}
+        - {x: 63, y: 127}
+        - {x: 59, y: 58}
+        - {x: 64, y: 57}
+        - {x: 67, y: 59}
+        - {x: 66, y: 58}
+        - {x: 62, y: 48}
+        - {x: 58, y: 18}
+        - {x: 58, y: -4}
+        - {x: 77, y: -4}
+        - {x: 101, y: 13}
+        - {x: 132, y: 49}
+        - {x: 132, y: 83}
+        - {x: 94, y: 137}
+      - - {x: 51, y: 0}
+        - {x: 53, y: -2}
+        - {x: 56, y: -1}
+        - {x: 56, y: 2}
+        - {x: 54, y: 4}
+        - {x: 51, y: 3}
     outline: []
   spritePackingTag: 
   userData: 

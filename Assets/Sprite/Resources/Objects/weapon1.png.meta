@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: f98d149198838ed44b61f95f0c8254d5
-timeCreated: 1472077253
+guid: d0195d53e206b7f43a7b9e6cd3903f42
+timeCreated: 1472053161
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Door_0
-    21300002: Door_1
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -40,10 +38,10 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 7
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
@@ -51,45 +49,7 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: Door_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 85
-        height: 139
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -42.5, y: 139}
-        - {x: -42.5, y: 0}
-        - {x: 3.5, y: 0}
-        - {x: 24.5, y: 100}
-        - {x: 24.5, y: 139}
-    - name: Door_1
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 0
-        width: 85
-        height: 139
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 16.5, y: 139}
-        - {x: 1.5, y: 110}
-        - {x: 1.5, y: 19}
-        - {x: 3.5, y: 0}
-        - {x: 42.5, y: 0}
-        - {x: 42.5, y: 139}
-      - - {x: 1.5, y: 101}
-        - {x: 4.5, y: 102}
-        - {x: 4.5, y: 105}
-        - {x: 1.5, y: 106}
-        - {x: -0.5, y: 104}
+    sprites: []
     outline: []
   spritePackingTag: 
   userData: 

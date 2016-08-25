@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2800098cb542547fbaa667544833e646
-timeCreated: 1472056569
+timeCreated: 1472080091
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -30,10 +30,10 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -50,64 +50,119 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    serializedVersion: 2
     sprites:
-    - serializedVersion: 2
-      name: bend_over_0
+    - name: bend_over_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bend_over_1
+      outline:
+      - - {x: 123, y: -2}
+        - {x: 132, y: 9}
+        - {x: 132, y: 88}
+        - {x: 96, y: 133}
+        - {x: 82, y: 140}
+        - {x: 69, y: 140}
+        - {x: 56, y: 129}
+        - {x: 39, y: 87}
+        - {x: 34, y: 31}
+        - {x: 34, y: -2}
+        - {x: 58, y: -2}
+        - {x: 60, y: -1}
+        - {x: 58, y: 6}
+        - {x: 67, y: -2}
+    - name: bend_over_1
       rect:
         serializedVersion: 2
         x: 369
         y: 0
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bend_over_2
+      outline:
+      - - {x: 59, y: 128}
+        - {x: 29, y: 98}
+        - {x: 19, y: 39}
+        - {x: 19, y: -4}
+        - {x: 132, y: -4}
+        - {x: 132, y: 89}
+        - {x: 105, y: 128}
+    - name: bend_over_2
       rect:
         serializedVersion: 2
         x: 738
         y: 0
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: bend_over_3
+      outline:
+      - - {x: 99, y: 27}
+        - {x: 96, y: 29}
+        - {x: 98, y: 31}
+        - {x: 103, y: 25}
+        - {x: 108, y: 25}
+        - {x: 110, y: 27}
+        - {x: 110, y: 33}
+        - {x: 123, y: 42}
+        - {x: 131, y: 48}
+        - {x: 134, y: 56}
+        - {x: 103, y: 79}
+        - {x: 98, y: 75}
+        - {x: 84, y: 79}
+        - {x: 112, y: 80}
+        - {x: 113, y: 90}
+        - {x: 78, y: 111}
+        - {x: 4, y: 111}
+        - {x: 4, y: -1}
+        - {x: 142, y: -1}
+        - {x: 142, y: 8}
+        - {x: 103, y: 25}
+    - name: bend_over_3
       rect:
         serializedVersion: 2
         x: 1107
         y: 0
         width: 369
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0, y: 0.125}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
+      outline:
+      - - {x: 0, y: 87}
+        - {x: 0, y: -2}
+        - {x: 142, y: -2}
+        - {x: 142, y: 55}
+        - {x: 114, y: 87}
+      - - {x: 82, y: 89}
+        - {x: 81, y: 85}
+        - {x: 83, y: 83}
+        - {x: 84, y: 83}
+        - {x: 90, y: 88}
+        - {x: 89, y: 91}
+        - {x: 86, y: 91}
+      - - {x: 21, y: 91}
+        - {x: 23, y: 88}
+        - {x: 27, y: 89}
+        - {x: 29, y: 92}
+        - {x: 29, y: 94}
+        - {x: 26, y: 95}
+      - - {x: 35, y: 93}
+        - {x: 38, y: 94}
+        - {x: 38, y: 97}
+        - {x: 35, y: 98}
+        - {x: 33, y: 96}
     outline: []
   spritePackingTag: 
   userData: 

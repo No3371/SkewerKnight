@@ -24,7 +24,7 @@ public class WorldManager : MonoBehaviour {
     public float TileWidth = 2.73f, MountainTileWidth = 2.46f;
 
     public int SpawnBurst = 5;
-    public float ObjectSpawnModifer = 0.8f; //唯正
+    public float ObjectSpawnModifer = 0.9f; //唯正
     public float ObjectSpawnThreshold = 5f;
     public float SpawnThreshold = 10f;
 
@@ -87,7 +87,7 @@ public class WorldManager : MonoBehaviour {
     }
 
     float LastDecoSpawnTime;
-    float DecoSpawnRate = 0.7f;
+    float DecoSpawnRate = 1f;
     void SpawnDeco()
     {
         if (Time.time - LastDecoSpawnTime > 0.5f && Random.Range(0f, 1f) < DecoSpawnRate)

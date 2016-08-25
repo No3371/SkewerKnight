@@ -10,6 +10,6 @@ public class AutoDispose : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (this.transform.position.x - GameManager.Instance.MainCamera.transform.position.x < -8) Destroy(this.gameObject);
+        if (this.transform.position.x - GameManager.Instance.MainCamera.transform.position.x < -10) Destroy(this.gameObject);
 	}
 }

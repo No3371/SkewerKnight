@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
 
     string Record;
 
+    Coroutine scoring;
+
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour {
         GameStartTime = Time.time;
 
         Achieved = new List<int>();
-        StartCoroutine(ScoringByTime());
+        scoring = StartCoroutine(ScoringByTime());
 	}
 	
 	// Update is called once per frame
@@ -98,6 +100,8 @@ public class GameManager : MonoBehaviour {
     public void GameOver()
     {
         Debug.Log("GAME OVER.");
-        StopCoroutine(ScoringByTime());
+        StopCoroutine(scoring);
+        GameOverScreen.SetActive(true);
+        MainCamera.GetComponent<AudioSource>().enabled = false;
     }
 }

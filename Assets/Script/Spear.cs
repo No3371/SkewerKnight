@@ -6,12 +6,16 @@ public class Spear : MonoBehaviour {
 	public bool Attacking = false;
 	public float BaseMouseY;
 	public GameObject Character;
-    Animator animator;
+    Animator animator, HorseFace;
     AudioSource Sound;
 
     public int Count; //0~5
 
     List<AudioClip> SoundList = new List<AudioClip>();
+
+    public List<GameObject> Caught = new List<GameObject>();
+
+    public List<Vector2> PosList = new List<Vector2>();
 
     float LastAttackTime;
 
@@ -21,11 +25,23 @@ public class Spear : MonoBehaviour {
         BaseMouseY = Screen.height / 2;
         animator = GetComponent<Animator>();
 
+        Animator[] temp = transform.parent.GetComponentsInChildren<Animator>();
+        foreach(Animator a in temp)
+        {
+            if (a.gameObject.name == "HorseFace") HorseFace = a;
+        }
+
         SoundList.AddRange(Resources.LoadAll<AudioClip>("Sounds"));
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        PosList.Clear();
+        for(int i = 0;  i < 5; i ++)
+        {
+            PosList.Add(GetComponentsInChildren<Transform>()[i].position);
+        }
+
         if (Time.time - LastAttackTime > 0.5f) Attacking = false;
         if (!Lock)
         {
@@ -44,16 +60,36 @@ public class Spear : MonoBehaviour {
     {
         if(other.gameObject.layer == 9)
         {
-            //other.GetComponent<Mob>().isCaught = true;
-            //other.GetComponent<Mob>().Spear = this;
-            
+            Debug.Log(Count);
+            other.GetComponent<Mob>().ifCaught = true;
+            other.GetComponent<Mob>().Spear = this;
+            Caught.Add(other.gameObject);
+            if(Count >= 5)
+            {
+                Eat();
+            }
         }
     }
 
-	public void ToggleLock() {
+    int[] Score = { 50, 80, 80, 100, 100, -1, -1 };
+
+    void Eat()
+    {
+        int tempScore = 0;
+        HorseFace.SetTrigger("Eat");
+        Count = 0;
+        foreach(GameObject C in Caught)
+        {
+            tempScore += Score[(int) C.GetComponent<Mob>().Type];
+        }
+        Caught.Clear();
+        GameManager.Instance.Score += tempScore;
+    }
+
+    public void ToggleLock() {
         Lock = !Lock;
         GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
-	}
+    }
 
 	void UpdateAngle()
     {

@@ -47,18 +47,18 @@ public class Character : MonoBehaviour {
 		}
 		else if(Input.GetKey(KeyCode.LeftShift) && State != CharacterState.Jumping)
         {
+            if(State == CharacterState.Bending) Spear.GetComponent<Spear>().ToggleLock();
             Debug.Log("detected.");
             State = CharacterState.Bending;
             animator.SetBool("Bending", true);
-            Spear.GetComponent<Spear>().ToggleLock();
         }
         else
         {
             if (State == CharacterState.Bending)
             {
+                if (State == CharacterState.Normal) Spear.GetComponent<Spear>().ToggleLock();
                 State = CharacterState.Normal;
                 animator.SetBool("Bending", false);
-                Spear.GetComponent<Spear>().ToggleLock();
                 moving = false;
             }
         }

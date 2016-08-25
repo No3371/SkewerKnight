@@ -1,26 +1,24 @@
 fileFormatVersion: 2
-guid: dab7d783dec41e64aa91fc892d6930ee
-timeCreated: 1472105711
+guid: 896de0ccb2b05b2409cc9db8c989fbc4
+timeCreated: 1472105692
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Title_0
-    21300002: Title_1
-    21300004: Title_2
-    21300006: Title_3
-    21300008: Title_4
-    21300010: Title_5
-    21300012: Title_6
-    21300014: Title_7
-    21300016: Title_8
-    21300018: Title_9
-    21300020: Title_10
-    21300022: Title_11
-    21300024: Title_12
-    21300026: Title_13
-    21300028: Title_14
-    21300030: Title_15
-    21300032: Title_16
+    21300000: GameOverText_0
+    21300002: GameOverText_1
+    21300004: GameOverText_2
+    21300006: GameOverText_3
+    21300008: GameOverText_4
+    21300010: GameOverText_5
+    21300012: GameOverText_6
+    21300014: GameOverText_7
+    21300016: GameOverText_8
+    21300018: GameOverText_9
+    21300020: GameOverText_10
+    21300022: GameOverText_11
+    21300024: GameOverText_12
+    21300026: GameOverText_13
+    21300028: GameOverText_14
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -70,72 +68,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Title_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 798
-        width: 378
-        height: 266
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Title_1
-      rect:
-        serializedVersion: 2
-        x: 378
-        y: 798
-        width: 378
-        height: 266
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Title_2
-      rect:
-        serializedVersion: 2
-        x: 756
-        y: 798
-        width: 378
-        height: 266
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Title_3
-      rect:
-        serializedVersion: 2
-        x: 1134
-        y: 798
-        width: 378
-        height: 266
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Title_4
-      rect:
-        serializedVersion: 2
-        x: 1512
-        y: 798
-        width: 378
-        height: 266
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Title_5
+      name: GameOverText_0
       rect:
         serializedVersion: 2
         x: 0
@@ -148,7 +81,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Title_6
+      name: GameOverText_1
       rect:
         serializedVersion: 2
         x: 378
@@ -161,7 +94,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Title_7
+      name: GameOverText_2
       rect:
         serializedVersion: 2
         x: 756
@@ -174,7 +107,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Title_8
+      name: GameOverText_3
       rect:
         serializedVersion: 2
         x: 1134
@@ -187,7 +120,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Title_9
+      name: GameOverText_4
       rect:
         serializedVersion: 2
         x: 1512
@@ -200,7 +133,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Title_10
+      name: GameOverText_5
       rect:
         serializedVersion: 2
         x: 0
@@ -213,7 +146,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Title_11
+      name: GameOverText_6
       rect:
         serializedVersion: 2
         x: 378
@@ -226,7 +159,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Title_12
+      name: GameOverText_7
       rect:
         serializedVersion: 2
         x: 756
@@ -239,7 +172,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Title_13
+      name: GameOverText_8
       rect:
         serializedVersion: 2
         x: 1134
@@ -252,7 +185,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Title_14
+      name: GameOverText_9
       rect:
         serializedVersion: 2
         x: 1512
@@ -265,7 +198,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Title_15
+      name: GameOverText_10
       rect:
         serializedVersion: 2
         x: 0
@@ -278,10 +211,49 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Title_16
+      name: GameOverText_11
       rect:
         serializedVersion: 2
         x: 378
+        y: 0
+        width: 378
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GameOverText_12
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 0
+        width: 378
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GameOverText_13
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 0
+        width: 378
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GameOverText_14
+      rect:
+        serializedVersion: 2
+        x: 1512
         y: 0
         width: 378
         height: 266

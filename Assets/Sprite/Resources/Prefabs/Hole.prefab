@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 423616}
   - 212: {fileID: 21279270}
   - 58: {fileID: 5895112}
+  - 114: {fileID: 11457704}
   m_Layer: 8
   m_Name: Hole
   m_TagString: Untagged
@@ -41,9 +42,20 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.15}
+  m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.31
+--- !u!114 &11457704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c66fb302f3a4204d91be9169fce5341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21279270
 SpriteRenderer:
   m_ObjectHideFlags: 1

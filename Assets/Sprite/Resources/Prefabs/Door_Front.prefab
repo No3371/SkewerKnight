@@ -28,9 +28,10 @@ GameObject:
   - 212: {fileID: 21279524}
   - 95: {fileID: 9524254}
   - 61: {fileID: 6151788}
+  - 114: {fileID: 11468322}
   m_Layer: 8
   m_Name: Door_Front
-  m_TagString: Untagged
+  m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,6 +111,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11468322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c66fb302f3a4204d91be9169fce5341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21279524
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -165,7 +177,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 5
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300002, guid: f98d149198838ed44b61f95f0c8254d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - spear
   - character
+  - Gate
   layers:
   - Default
   - TransparentFX

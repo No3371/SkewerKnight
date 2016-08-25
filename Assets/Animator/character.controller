@@ -13,13 +13,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Bending
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -94,11 +94,11 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.031984933
-  m_TransitionOffset: 0.084494695
-  m_ExitTime: 0.0635436
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_TransitionDuration: 0.03198493
+  m_TransitionOffset: 0.0022313802
+  m_ExitTime: 0.03861533
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -118,9 +118,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.030142546
-  m_TransitionOffset: 0.87667644
-  m_ExitTime: 0.8766763
+  m_TransitionDuration: 0.09446033
+  m_TransitionOffset: 0.0373725
+  m_ExitTime: 0.9673725
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -139,9 +139,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.067517
-  m_TransitionOffset: 0
-  m_ExitTime: 0.3107143
+  m_TransitionDuration: 0.06751701
+  m_TransitionOffset: 0.007251353
+  m_ExitTime: 0.68
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

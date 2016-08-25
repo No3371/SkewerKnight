@@ -1,20 +1,17 @@
 fileFormatVersion: 2
-guid: e9c1ba1f66a792a4a990796b6123e0e0
-timeCreated: 1472100283
+guid: dab7d783dec41e64aa91fc892d6930ee
+timeCreated: 1472099100
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Mountain_0
-    21300002: Mountain_1
-    21300004: Mountain_2
-    21300006: Mountain_3
-    21300008: Mountain_4
-    21300010: Mountain_5
-    21300012: Mountain_6
-    21300014: Mountain_7
-    21300016: Mountain_8
-    21300018: Mountain_9
-    21300020: Mountain_10
+    21300000: Title_0
+    21300002: Title_1
+    21300004: Title_2
+    21300006: Title_3
+    21300008: Title_4
+    21300010: Title_5
+    21300012: Title_6
+    21300014: Title_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -64,145 +61,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mountain_0
+      name: Title_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1440
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        y: 798
+        width: 378
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mountain_1
+      name: Title_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1296
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        x: 378
+        y: 798
+        width: 378
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mountain_2
+      name: Title_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 1152
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        y: 532
+        width: 378
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mountain_3
+      name: Title_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1008
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        x: 378
+        y: 532
+        width: 378
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mountain_4
+      name: Title_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 864
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        y: 266
+        width: 378
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mountain_5
+      name: Title_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 720
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        x: 378
+        y: 266
+        width: 378
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mountain_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 576
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 432
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 288
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 144
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_10
+      name: Title_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        width: 378
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Title_7
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 0
+        width: 378
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

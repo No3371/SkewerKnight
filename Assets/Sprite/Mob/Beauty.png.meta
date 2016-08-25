@@ -1,20 +1,19 @@
 fileFormatVersion: 2
-guid: e9c1ba1f66a792a4a990796b6123e0e0
-timeCreated: 1472100283
+guid: b6fefa7c96fb34b70a04c8fa225e3ba1
+timeCreated: 1472082942
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Mountain_0
-    21300002: Mountain_1
-    21300004: Mountain_2
-    21300006: Mountain_3
-    21300008: Mountain_4
-    21300010: Mountain_5
-    21300012: Mountain_6
-    21300014: Mountain_7
-    21300016: Mountain_8
-    21300018: Mountain_9
-    21300020: Mountain_10
+    21300000: Beauty_0
+    21300002: Beauty_1
+    21300004: Beauty_2
+    21300006: Beauty_3
+    21300008: Beauty_4
+    21300010: Beauty_5
+    21300012: Beauty_6
+    21300014: Beauty_7
+    21300016: Beauty_8
+    21300018: Beauty_9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -37,7 +36,7 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -3
+  textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
     filterMode: 0
@@ -64,144 +63,131 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mountain_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1440
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1296
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1152
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1008
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 864
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 720
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 576
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 432
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 288
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 144
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_10
+      name: Beauty_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 273
-        height: 144
-      alignment: 6
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Beauty_1
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Beauty_2
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Beauty_3
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Beauty_4
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Beauty_5
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Beauty_6
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Beauty_7
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Beauty_8
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Beauty_9
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []

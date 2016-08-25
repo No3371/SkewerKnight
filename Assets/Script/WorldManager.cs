@@ -20,7 +20,7 @@ public class WorldManager : MonoBehaviour {
     public List<GameObject> Prefab_Objects;
 
     float LastObjectSpawnTime;
-    public float SpawnPosX = 0, MounSpawnPosX = 0, GroundY = 0;
+    public float SpawnPosX = 0, GroundY = 0;
     public float TileWidth = 2.73f, MountainTileWidth = 2.46f;
 
     public int SpawnBurst = 5;
@@ -50,26 +50,21 @@ public class WorldManager : MonoBehaviour {
         CList.AddRange(Resources.LoadAll<Sprite>(CSpritePath));
         DList.AddRange(Resources.LoadAll<Sprite>(DSpritePath));
         MList.AddRange(Resources.LoadAll<Sprite>(MSpritePath));
-        Debug.Log("GLIst: " + GList.Count);
-        Debug.Log("CLIst: " + CList.Count);
-        Debug.Log("DLIst: " + DList.Count);
     }
 
 
     void SpawnTile()
     {
-        Debug.Log("Spawning tiles.");
         for (int i = 0; i < SpawnBurst; i++)
         {
             GameObject temp = (GameObject)GameObject.Instantiate(Prefab_GTile, new Vector2(SpawnPosX, GroundY), new Quaternion());
             temp.GetComponent<SpriteRenderer>().sprite = GList[Random.Range(0, GList.Count)];
             temp.transform.SetParent(World.transform);
-            temp = (GameObject)GameObject.Instantiate(Prefab_Mountain, new Vector2(MounSpawnPosX, GroundY), new Quaternion());
+            temp = (GameObject)GameObject.Instantiate(Prefab_Mountain, new Vector2(SpawnPosX, GroundY), new Quaternion());
             temp.GetComponent<SpriteRenderer>().sprite = MList[Random.Range(0, MList.Count)];
             temp.transform.SetParent(World.transform);
 
             SpawnPosX += TileWidth;
-            MounSpawnPosX += MountainTileWidth;
             for(int j = 0; j < Random.Range(0, 3); j++)
                 SpawnCloud();
             for (int j = 0; j < Random.Range(0, 3); j++)

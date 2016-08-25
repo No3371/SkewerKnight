@@ -9,6 +9,8 @@ public class Spear : MonoBehaviour {
     Animator animator;
     AudioSource Sound;
 
+    public int Count; //0~5
+
     List<AudioClip> SoundList = new List<AudioClip>();
 
     float LastAttackTime;

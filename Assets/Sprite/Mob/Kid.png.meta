@@ -1,20 +1,17 @@
 fileFormatVersion: 2
-guid: e9c1ba1f66a792a4a990796b6123e0e0
-timeCreated: 1472100283
+guid: 419af9aca9b984db4a48f53b6b52cfbe
+timeCreated: 1472082464
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Mountain_0
-    21300002: Mountain_1
-    21300004: Mountain_2
-    21300006: Mountain_3
-    21300008: Mountain_4
-    21300010: Mountain_5
-    21300012: Mountain_6
-    21300014: Mountain_7
-    21300016: Mountain_8
-    21300018: Mountain_9
-    21300020: Mountain_10
+    21300000: Kid_0
+    21300002: Kid_1
+    21300004: Kid_2
+    21300006: Kid_3
+    21300008: Kid_4
+    21300010: Kid_5
+    21300012: Kid_6
+    21300014: Kid_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -37,7 +34,7 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -3
+  textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
     filterMode: 0
@@ -64,144 +61,105 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mountain_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1440
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1296
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1152
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1008
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 864
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 720
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 576
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 432
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 288
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 144
-        width: 273
-        height: 144
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mountain_10
+      name: Kid_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 273
-        height: 144
-      alignment: 6
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kid_1
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kid_2
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kid_3
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kid_4
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kid_5
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kid_6
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kid_7
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 0
+        width: 82
+        height: 118
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []

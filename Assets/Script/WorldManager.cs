@@ -11,19 +11,21 @@ public class WorldManager : MonoBehaviour {
     List<Sprite> GList = new List<Sprite>();
     List<Sprite> CList = new List<Sprite>();
     List<Sprite> DList = new List<Sprite>();
-    public GameObject Prefab_GTile, Prefab_Cloud, Prefab_Deco;
+    List<Sprite> MList = new List<Sprite>();
+    public GameObject Prefab_GTile, Prefab_Cloud, Prefab_Deco, Prefab_Mountain;
     string GSpritePath = "Tiles/G";
     string CSpritePath = "Tiles/Cloud";
     string DSpritePath = "Tiles/Deco";
+    string MSpritePath = "Tiles/Mountain";
     public List<GameObject> Prefab_Objects;
 
     float LastObjectSpawnTime;
-    public float SpawnPosX = 0, GroundY = 0;
-    public float TileWidth = 2.73f;
+    public float SpawnPosX = 0, MounSpawnPosX = 0, GroundY = 0;
+    public float TileWidth = 2.73f, MountainTileWidth = 2.46f;
 
-    public int SpawnBurst = 3;
-    public float ObjectSpawnModifer = 1f; //唯正
-    public float ObjectSpawnThreshold = 3f;
+    public int SpawnBurst = 5;
+    public float ObjectSpawnModifer = 0.8f; //唯正
+    public float ObjectSpawnThreshold = 5f;
     public float SpawnThreshold = 10f;
 
     // Use this for initialization
@@ -47,6 +49,7 @@ public class WorldManager : MonoBehaviour {
         GList.AddRange(Resources.LoadAll<Sprite>(GSpritePath));
         CList.AddRange(Resources.LoadAll<Sprite>(CSpritePath));
         DList.AddRange(Resources.LoadAll<Sprite>(DSpritePath));
+        MList.AddRange(Resources.LoadAll<Sprite>(MSpritePath));
         Debug.Log("GLIst: " + GList.Count);
         Debug.Log("CLIst: " + CList.Count);
         Debug.Log("DLIst: " + DList.Count);
@@ -61,12 +64,17 @@ public class WorldManager : MonoBehaviour {
             GameObject temp = (GameObject)GameObject.Instantiate(Prefab_GTile, new Vector2(SpawnPosX, GroundY), new Quaternion());
             temp.GetComponent<SpriteRenderer>().sprite = GList[Random.Range(0, GList.Count)];
             temp.transform.SetParent(World.transform);
+            temp = (GameObject)GameObject.Instantiate(Prefab_Mountain, new Vector2(MounSpawnPosX, GroundY), new Quaternion());
+            temp.GetComponent<SpriteRenderer>().sprite = MList[Random.Range(0, MList.Count)];
+            temp.transform.SetParent(World.transform);
 
             SpawnPosX += TileWidth;
+            MounSpawnPosX += MountainTileWidth;
             for(int j = 0; j < Random.Range(0, 3); j++)
                 SpawnCloud();
             for (int j = 0; j < Random.Range(0, 3); j++)
                 SpawnDeco();
+            SpawnObject();
         }
     }
 
@@ -79,6 +87,7 @@ public class WorldManager : MonoBehaviour {
             GameObject temp = (GameObject)GameObject.Instantiate(Prefab_Cloud, new Vector2(SpawnPosX + Random.Range(-4f, 4f), GroundY + Random.Range(3f, 5f)), new Quaternion());
             temp.GetComponent<SpriteRenderer>().sprite = CList[Random.Range(0, CList.Count)];
             temp.transform.SetParent(World.transform);
+            LastCloudSpawnTime = Time.time;
         }
     }
 
@@ -91,18 +100,37 @@ public class WorldManager : MonoBehaviour {
             GameObject temp = (GameObject)GameObject.Instantiate(Prefab_Deco, new Vector2(SpawnPosX + Random.Range(-2f, 2f), GroundY), new Quaternion());
             temp.GetComponent<SpriteRenderer>().sprite = DList[Random.Range(0, DList.Count)];
             temp.transform.SetParent(World.transform);
+            LastDecoSpawnTime = Time.time;
         }
     }
+    
 
-    void SpawnObject(int type)
+    void SpawnObject()
     {
         if(Time.time - LastObjectSpawnTime > ObjectSpawnThreshold)
         {
             if(Random.Range(0f, 100f) < Mathf.Pow(Mathf.Abs(Time.time - LastObjectSpawnTime), 2) * ObjectSpawnModifer)
             {
-                GameObject temp = GameObject.Instantiate(Prefab_Objects[type]);
-                temp.transform.position = new Vector2(SpawnPosX, GroundY);
+                int id = Random.Range(0, 4);
+                GameObject temp;
+                if(id == 3)
+                {
+                    for(int i = 0; i < Random.Range(1, 5); i++)
+                    {
+                        temp = GameObject.Instantiate(Prefab_Objects[id]);
+                        temp.transform.position = new Vector2(SpawnPosX + i * 1.5f, GroundY);
+                        temp.transform.SetParent(World.transform);
+                    }
+                }
+                else
+                {
+                    temp = GameObject.Instantiate(Prefab_Objects[id]);
+                    temp.transform.position = new Vector2(SpawnPosX, GroundY);
+                    temp.transform.SetParent(World.transform);
+                }
+                
             }
+            LastObjectSpawnTime = Time.time;
         }
     }
 }

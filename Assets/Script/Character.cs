@@ -19,6 +19,8 @@ public class Character : MonoBehaviour {
 	public float GrY;
 	public Animator animator;
 
+    public GameObject Spear;
+
 	// Use this for initialization
 	void Start () {
 		State = CharacterState.Normal;
@@ -27,6 +29,7 @@ public class Character : MonoBehaviour {
 
         GrY = WorldManager.Instance.GroundY;
 
+        Spear = GetComponentInChildren<Spear>().gameObject;
     }
 	
 	// Update is called once per frame
@@ -36,26 +39,29 @@ public class Character : MonoBehaviour {
         //end basic move
         
         //input
-        if (Input.GetKeyDown(KeyCode.Space) && !moving) {
+        if (Input.GetKeyDown(KeyCode.Space) && State == CharacterState.Normal) {
             GameManager.Instance.MainCamera.GetComponent<CameraController>().LockY = true;
             State = CharacterState.Jumping;
             jspeed = JumpPower;
-			moving = true;
 			transform.Translate(Vector3.up * (jspeed - gravity) * Time.deltaTime);
 		}
-		if(Input.GetKey(KeyCode.S) && !moving)
+		else if(Input.GetKey(KeyCode.LeftShift) && State != CharacterState.Jumping)
         {
             Debug.Log("detected.");
             State = CharacterState.Bending;
             animator.SetBool("Bending", true);
-            moving = true;
+            Spear.GetComponent<Spear>().ToggleLock();
         }
-        //else
-        //{
-           // State = CharacterState.Normal;
-           // animator.SetBool("Bending", false);
-           // moving = false;
-        //}
+        else
+        {
+            if (State == CharacterState.Bending)
+            {
+                State = CharacterState.Normal;
+                animator.SetBool("Bending", false);
+                Spear.GetComponent<Spear>().ToggleLock();
+                moving = false;
+            }
+        }
 		//end input
 
 		//move execute
@@ -89,15 +95,20 @@ public class Character : MonoBehaviour {
             {
                 GameManager.Instance.MainCamera.GetComponent<CameraController>().LockY = false;
                 State = CharacterState.Normal;
-				moving = false;
 				jspeed = 0;
 				transform.position = new Vector2(transform.position.x,GrY);
 			}
 		}
 	}
 
-	void OnTriggerEnter(Collider other) {
-        if (other.gameObject.layer == 8) GameManager.Instance.GameOver();
+	void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.layer == 8)
+        {
+            if (other.tag == "Gate")
+            {
+                if (State != CharacterState.Bending) GameManager.Instance.GameOver();
+            } else GameManager.Instance.GameOver();
+        } 
     }
     
 

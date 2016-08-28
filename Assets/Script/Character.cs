@@ -44,21 +44,22 @@ public class Character : MonoBehaviour {
             State = CharacterState.Jumping;
             jspeed = JumpPower;
 			transform.Translate(Vector3.up * (jspeed - gravity) * Time.deltaTime);
-		}
+            animator.SetBool("Jump", true);
+        }
 		else if(Input.GetKey(KeyCode.LeftShift) && State != CharacterState.Jumping)
         {
+            if(State == CharacterState.Bending) Spear.GetComponent<Spear>().ToggleLock();
             Debug.Log("detected.");
             State = CharacterState.Bending;
             animator.SetBool("Bending", true);
-            Spear.GetComponent<Spear>().ToggleLock();
         }
         else
         {
             if (State == CharacterState.Bending)
             {
+                if (State == CharacterState.Normal) Spear.GetComponent<Spear>().ToggleLock();
                 State = CharacterState.Normal;
                 animator.SetBool("Bending", false);
-                Spear.GetComponent<Spear>().ToggleLock();
                 moving = false;
             }
         }
@@ -91,13 +92,21 @@ public class Character : MonoBehaviour {
 		}
 		if(State == CharacterState.Jumping) {
 			jspeed -= 0.14f;
-			if(this.transform.position.y <= GrY)
+            Debug.Log(jspeed);
+            if (this.transform.position.y <= GrY) //著地
             {
+                jspeed = 0;
                 GameManager.Instance.MainCamera.GetComponent<CameraController>().LockY = false;
                 State = CharacterState.Normal;
-				jspeed = 0;
+                animator.SetBool("JumpBack", false);
 				transform.position = new Vector2(transform.position.x,GrY);
 			}
+            else if(jspeed <= gravity) //當腳色跳到最高時
+            {
+                animator.SetBool("JumpBack", true);
+                animator.SetBool("Jump", false);
+            }
+			
 		}
 	}
 

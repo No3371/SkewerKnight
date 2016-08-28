@@ -16,4 +16,6 @@ public class CameraController : MonoBehaviour {
             this.transform.position = new Vector3(GameManager.Instance.Character.transform.position.x, this.transform.position.y) + new Vector3(3, 0, -6);
         else if(!LockY) this.transform.position = new Vector3(GameManager.Instance.Character.transform.position.x + 3, -2f + this.GetComponent<Camera>().orthographicSize, -6f);
     }
+
+
 }

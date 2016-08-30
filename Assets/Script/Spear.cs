@@ -32,16 +32,14 @@ public class Spear : MonoBehaviour {
         }
 
         SoundList.AddRange(Resources.LoadAll<AudioClip>("Sounds"));
-	}
+        for (int i = 0; i < 5; i++)
+        {
+            PosList.Add(GetComponentsInChildren<Transform>()[i].localPosition);
+        } 
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        PosList.Clear();
-        for(int i = 0;  i < 5; i ++)
-        {
-            PosList.Add(GetComponentsInChildren<Transform>()[i].position);
-        }
-
         if (Time.time - LastAttackTime > 0.5f) Attacking = false;
         if (!Lock)
         {
@@ -59,15 +57,20 @@ public class Spear : MonoBehaviour {
     void OnTriggerEnter2D (Collider2D other)
     {
         if(other.gameObject.layer == 9)
-        {
-            Debug.Log(Count);
-            other.GetComponent<Mob>().ifCaught = true;
-            other.GetComponent<Mob>().Spear = this;
-            Caught.Add(other.gameObject);
-            if(Count >= 5)
+        {   if(Count >= 5)
             {
-                Eat();
+                Debug.Log("time to eat");
+                //Eat();
             }
+            else
+            {
+                Debug.Log(Count);
+                other.GetComponent<Mob>().ifCaught = true;
+                other.GetComponent<Mob>().Spear = this;
+                Caught.Add(other.gameObject);
+            }
+            
+            
         }
     }
 
@@ -99,7 +102,5 @@ public class Spear : MonoBehaviour {
         if (angle > 90 && angle < 180) angle = 90f;
         else if (angle > 180 && angle < 340) angle = 340f;
         this.transform.localEulerAngles = new Vector3(0, 0, angle);
-        //Debug.Log(Input.mousePosition.y + "/" + angle);
-
     }
 }

@@ -63,27 +63,6 @@ public class Character : MonoBehaviour {
                 moving = false;
             }
         }
-		//end input
-
-		//move execute
-		// if(state == "ju") {
-		// 	if(transform.position.y < top) {
-		// 		transform.Translate(Vector3.up * jspeed * Time.deltaTime);
-		// 	}
-		// 	else if(transform.position.y >= top) state = "jd";
-		// }
-		// else if(state == "jd") {
-		// 	if(transform.position.y >= WorldManager.Instance.GroundY) {
-		// 		transform.Translate(Vector3.down * jspeed * Time.deltaTime);
-		// 	}
-		// 	else if(transform.position.y < WorldManager.Instance.GroundY) {
-		// 		transform.position = new Vector2(transform.position.x,WorldManager.Instance.GroundY);
-		// 		state = "n";
-		// 		moving = false;
-		// 	}
-		// }
-		//if(state == "d") down();
-		//end move execute
 	}
 
 	void FixedUpdate() {
@@ -92,7 +71,6 @@ public class Character : MonoBehaviour {
 		}
 		if(State == CharacterState.Jumping) {
 			jspeed -= 0.14f;
-            Debug.Log(jspeed);
             if (this.transform.position.y <= GrY) //µÛ¦a
             {
                 jspeed = 0;

@@ -69,7 +69,7 @@ public class Mob : MonoBehaviour {
                 break;
             case 5:
             case 6:
-                if ((transform.FindChild("BallonB")).gameObject != null)
+                if ((transform.childCount == 1))
                 {
                     Destroy((transform.FindChild("BallonB")).gameObject);
                 }

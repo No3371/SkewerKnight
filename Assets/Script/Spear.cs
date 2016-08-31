@@ -32,7 +32,7 @@ public class Spear : MonoBehaviour {
         }
 
         SoundList.AddRange(Resources.LoadAll<AudioClip>("Sounds"));
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
             PosList.Add(GetComponentsInChildren<Transform>()[i].localPosition);
         } 

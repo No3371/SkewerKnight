@@ -16,7 +16,6 @@ public class Spear : MonoBehaviour {
     public List<GameObject> Caught = new List<GameObject>();
 
     public List<Vector2> PosList = new List<Vector2>();
-
     float LastAttackTime;
 
     public bool Lock = false;
@@ -61,6 +60,10 @@ public class Spear : MonoBehaviour {
             {
                 Debug.Log("time to eat");
                 //Eat();
+                for (int i = 5; i < transform.childCount; i++)
+                {
+                    Destroy(transform.GetChild(i).gameObject);
+                }
             }
             else
             {
@@ -80,6 +83,11 @@ public class Spear : MonoBehaviour {
     {
         int tempScore = 0;
         HorseFace.SetTrigger("Eat");
+        for (int i = 6; i <= transform.childCount; i++)
+        {
+            //DeleteObject = GetComponentsInChildren<Transform>()[i].name;
+            Debug.Log(DeleteObject);
+        }
         Count = 0;
         foreach(GameObject C in Caught)
         {

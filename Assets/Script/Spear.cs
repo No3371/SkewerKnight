@@ -55,20 +55,23 @@ public class Spear : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D other)
     {
-        if(other.gameObject.layer == 9)
-        {   if(Count >= 5)
+        if (Attacking)
+        {
+            if (other.gameObject.layer == 9)
             {
-                Debug.Log("time to eat");
-                Eat();
+                if (Count >= 5)
+                {
+                    Debug.Log("time to eat");
+                    Eat();
+                }
+                else
+                {
+                    Debug.Log(Count);
+                    other.GetComponent<Mob>().ifCaught = true;
+                    other.GetComponent<Mob>().Spear = this;
+                    Caught.Add(other.gameObject);
+                }
             }
-            else
-            {
-                Debug.Log(Count);
-                other.GetComponent<Mob>().ifCaught = true;
-                other.GetComponent<Mob>().Spear = this;
-                Caught.Add(other.gameObject);
-            }
-            
         }
     }
 
@@ -100,6 +103,6 @@ public class Spear : MonoBehaviour {
         if (angle < 0) angle += 360f;
         if (angle > 90 && angle < 180) angle = 90f;
         else if (angle > 180 && angle < 340) angle = 340f;
-        this.transform.localEulerAngles = new Vector3(0, 0, angle);
+        transform.localEulerAngles = new Vector3(0, 0, angle);
     }
 }

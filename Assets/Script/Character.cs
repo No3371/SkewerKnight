@@ -18,6 +18,7 @@ public class Character : MonoBehaviour {
 	public float JumpPower = 10f;
 	public float GrY;
 	public Animator animator;
+    public bool ToggleSwitch = true;
 
     public GameObject Spear;
 
@@ -48,10 +49,18 @@ public class Character : MonoBehaviour {
         }
 		else if(Input.GetKey(KeyCode.LeftShift) && State != CharacterState.Jumping)
         {
-            if(State == CharacterState.Bending) Spear.GetComponent<Spear>().ToggleLock();
-            Debug.Log("detected.");
+            if (State == CharacterState.Bending && ToggleSwitch)
+            {
+                ToggleSwitch = false;
+                Spear.GetComponent<Spear>().ToggleLock();
+            }
             State = CharacterState.Bending;
             animator.SetBool("Bending", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            ToggleSwitch = true;
+            Spear.GetComponent<Spear>().ToggleLock();
         }
         else
         {

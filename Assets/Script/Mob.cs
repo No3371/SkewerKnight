@@ -66,7 +66,7 @@ public class Mob : MonoBehaviour {
                 break;
             case 3:
                 Position = Spear.PosList[PositionOnSpear];
-                Position.y = -0.08f;
+                Position.y = -0.1f;
                 break;
             case 5:
             case 6:

@@ -23,12 +23,12 @@ public class Spear : MonoBehaviour {
 	void Start () {
         BaseMouseY = Screen.height / 2;
         animator = GetComponent<Animator>();
-
-        Animator[] temp = transform.parent.GetComponentsInChildren<Animator>();
-        foreach(Animator a in temp)
-        {
-            if (a.gameObject.name == "HorseFace") HorseFace = a;
-        }
+        HorseFace = GameObject.Find("HorseFace").GetComponent<Animator>();
+        //Animator[] temp = transform.parent.GetComponentsInChildren<Animator>();
+        //foreach(Animator a in temp)
+        //{
+        //    if (a.gameObject.name == "HorseFace") HorseFace = a;
+        //}
 
         SoundList.AddRange(Resources.LoadAll<AudioClip>("Sounds"));
         for (int i = 0; i < 6; i++)
@@ -59,11 +59,7 @@ public class Spear : MonoBehaviour {
         {   if(Count >= 5)
             {
                 Debug.Log("time to eat");
-                //Eat();
-                for (int i = 5; i < transform.childCount; i++)
-                {
-                    Destroy(transform.GetChild(i).gameObject);
-                }
+                Eat();
             }
             else
             {
@@ -73,7 +69,6 @@ public class Spear : MonoBehaviour {
                 Caught.Add(other.gameObject);
             }
             
-            
         }
     }
 
@@ -81,20 +76,16 @@ public class Spear : MonoBehaviour {
 
     void Eat()
     {
-        int tempScore = 0;
         HorseFace.SetTrigger("Eat");
-        for (int i = 6; i <= transform.childCount; i++)
-        {
-            //DeleteObject = GetComponentsInChildren<Transform>()[i].name;
-            Debug.Log(DeleteObject);
-        }
-        Count = 0;
+        int tempScore = 0;
         foreach(GameObject C in Caught)
         {
             tempScore += Score[(int) C.GetComponent<Mob>().Type];
         }
-        Caught.Clear();
         GameManager.Instance.Score += tempScore;
+        for (int i = 5; i < transform.childCount; i++) Destroy(transform.GetChild(i).gameObject);
+        Count = 0;
+        Caught.Clear();
     }
 
     public void ToggleLock() {

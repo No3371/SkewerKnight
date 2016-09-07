@@ -9,12 +9,16 @@ public class Mob : MonoBehaviour {
 	public int Volume;
 	public Spear Spear;
     public Vector2 Position;
-
+    Vector2 Pos;
+    float Ran;
     static float SlipDuration = 2f;
-
-	// Use this for initialization
-	void Start () {
-		ifCaught = false;
+    Animator animator;
+    // Use this for initialization
+    void Start () {
+        animator = GetComponent<Animator>();
+        Pos = transform.position;
+        Ran = Random.Range(0, 30);
+        ifCaught = false;
 		if (Type == MobManager.MobType.Fat || Type == MobManager.MobType.BalloonFat) {
 			Volume = 3;
 		} else
@@ -24,6 +28,12 @@ public class Mob : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if(!ifCaught && (Type == MobManager.MobType.BalloonFat || Type == MobManager.MobType.BalloonKid))
+        {
+            Pos.y += (Mathf.Cos(Time.time + Ran) / 300);
+            transform.position = Pos;
+        }
+
         if (ifCaught == true) //抓到
         {
             if (!CountPlus)
@@ -48,6 +58,8 @@ public class Mob : MonoBehaviour {
 
     void Caught()
     {
+        GetComponent<AudioSource>().Play();
+        if(animator != null) animator.SetBool("die",true);
         MobManager.Instance.MobCount -= 1;
         this.transform.parent = Spear.transform;
         Spear.Count += Volume;
@@ -66,7 +78,7 @@ public class Mob : MonoBehaviour {
                 break;
             case 3:
                 Position = Spear.PosList[PositionOnSpear];
-                Position.y = -0.1f;
+                Position.y = 0.09f;
                 break;
             case 5:
             case 6:

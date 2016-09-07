@@ -19,15 +19,21 @@ public class Character : MonoBehaviour {
 	public float GrY;
 	public Animator animator;
     public bool ToggleSwitch = true;
-
+    AudioSource JumpSound, BendSound;
+    public AudioSource[] Audiolist;
     public GameObject Spear;
-
+    GameObject HorseFace;
+    SpriteRenderer HFS;
 	// Use this for initialization
 	void Start () {
-		State = CharacterState.Normal;
+        HorseFace = transform.Find("HorseFace").gameObject;
+        HFS = HorseFace.GetComponent<SpriteRenderer>();
+        State = CharacterState.Normal;
 		moving = false;
 		animator = GetComponent<Animator>();
-
+        Audiolist = GetComponents<AudioSource>();
+        JumpSound = Audiolist[0];
+        BendSound = Audiolist[1];
         GrY = WorldManager.Instance.GroundY;
 
         Spear = GetComponentInChildren<Spear>().gameObject;
@@ -35,19 +41,22 @@ public class Character : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        bool BSwitch = true; //BendSound switch
+
 		//basic move
 		transform.Translate(Vector3.right * GameManager.Instance.ScrollSpeed * Time.deltaTime);
         //end basic move
         
         //input
-        if (Input.GetKeyDown(KeyCode.Space) && State == CharacterState.Normal) {
+        if (Input.GetKeyDown(KeyCode.W) && State == CharacterState.Normal) {
             GameManager.Instance.MainCamera.GetComponent<CameraController>().LockY = true;
+            JumpSound.Play();
             State = CharacterState.Jumping;
             jspeed = JumpPower;
 			transform.Translate(Vector3.up * (jspeed - gravity) * Time.deltaTime);
             animator.SetBool("Jump", true);
         }
-		else if(Input.GetKey(KeyCode.LeftShift) && State != CharacterState.Jumping)
+		else if(Input.GetKey(KeyCode.S) && State != CharacterState.Jumping)
         {
             if (State == CharacterState.Bending && ToggleSwitch)
             {
@@ -57,7 +66,7 @@ public class Character : MonoBehaviour {
             State = CharacterState.Bending;
             animator.SetBool("Bending", true);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(KeyCode.S))
         {
             ToggleSwitch = true;
             Spear.GetComponent<Spear>().ToggleLock();
@@ -72,7 +81,18 @@ public class Character : MonoBehaviour {
                 moving = false;
             }
         }
-	}
+        if(!(State == CharacterState.Bending) && BSwitch)
+        {
+            BendSound.Play();
+            BSwitch = false;
+            HFS.enabled = true;
+        }
+        if ((State == CharacterState.Bending))
+        {
+            BSwitch = true;
+            HFS.enabled = false;
+        }
+    }
 
 	void FixedUpdate() {
 		if(transform.position.y > GrY) {
@@ -93,7 +113,6 @@ public class Character : MonoBehaviour {
                 animator.SetBool("JumpBack", true);
                 animator.SetBool("Jump", false);
             }
-			
 		}
 	}
 

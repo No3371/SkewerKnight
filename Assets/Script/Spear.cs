@@ -5,10 +5,11 @@ using System.Collections.Generic;
 public class Spear : MonoBehaviour {
 	public bool Attacking = false;
 	public float BaseMouseY;
+    public float EatDelay = 0.1f;
 	public GameObject Character;
     Animator animator, HorseFace;
-    AudioSource Sound;
-
+    AudioSource Sound,SpearSound,CaughtSound;
+    float EatTime = 0;
     public int Count; //0~5
 
     List<AudioClip> SoundList = new List<AudioClip>();
@@ -17,19 +18,16 @@ public class Spear : MonoBehaviour {
 
     public List<Vector2> PosList = new List<Vector2>();
     float LastAttackTime;
-
+    public AudioSource[] Audiolist;
     public bool Lock = false;
 	// Use this for initialization
 	void Start () {
         BaseMouseY = Screen.height / 2;
         animator = GetComponent<Animator>();
         HorseFace = GameObject.Find("HorseFace").GetComponent<Animator>();
-        //Animator[] temp = transform.parent.GetComponentsInChildren<Animator>();
-        //foreach(Animator a in temp)
-        //{
-        //    if (a.gameObject.name == "HorseFace") HorseFace = a;
-        //}
-
+        Audiolist = GetComponents<AudioSource>();
+        SpearSound = Audiolist[0];
+        CaughtSound = Audiolist[1];
         SoundList.AddRange(Resources.LoadAll<AudioClip>("Sounds"));
         for (int i = 0; i < 6; i++)
         {
@@ -39,19 +37,41 @@ public class Spear : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Time.time - LastAttackTime > 0.5f) Attacking = false;
-        if (!Lock)
-        {
-            UpdateAngle();
-            if (Input.GetMouseButtonDown(0))
-            {
-                Attacking = true;
-                animator.SetTrigger("Push");
-                LastAttackTime = Time.time;
-            }
 
+        if ((Time.time - LastAttackTime > 0.5f))
+        {
+            if (!Lock)
+            {
+                if (Input.GetMouseButtonDown(0) )
+                {
+                    if(Count >= 5 && (transform.rotation.z > -10 || transform.rotation.z < 10))
+                    {
+                        Eat();
+                    }
+                    else
+                    {
+                        SpearSound.Play();
+                        Attacking = true;
+                        animator.SetTrigger("Push");
+                        LastAttackTime = Time.time;
+                    }
+                }
+                else Attacking = false;
+            }
         }
-	}
+
+        if(!Lock) UpdateAngle();
+
+        if (EatTime != 0)
+        {
+            if ((Time.time - EatTime) > EatDelay)
+            {
+                for (int i = 5; i < transform.childCount; i++) Destroy(transform.GetChild(i).gameObject);
+                EatTime = 0;
+                GetComponent<CircleCollider2D>().enabled = true;
+            }
+        }
+    }
 
     void OnTriggerEnter2D (Collider2D other)
     {
@@ -59,18 +79,10 @@ public class Spear : MonoBehaviour {
         {
             if (other.gameObject.layer == 9)
             {
-                if (Count >= 5)
-                {
-                    Debug.Log("time to eat");
-                    Eat();
-                }
-                else
-                {
-                    Debug.Log(Count);
-                    other.GetComponent<Mob>().ifCaught = true;
-                    other.GetComponent<Mob>().Spear = this;
-                    Caught.Add(other.gameObject);
-                }
+                CaughtSound.Play();
+                other.GetComponent<Mob>().ifCaught = true;
+                other.GetComponent<Mob>().Spear = this;
+                Caught.Add(other.gameObject);
             }
         }
     }
@@ -79,6 +91,8 @@ public class Spear : MonoBehaviour {
 
     void Eat()
     {
+        GetComponent<CircleCollider2D>().enabled = false;
+        EatTime = Time.time;
         HorseFace.SetTrigger("Eat");
         int tempScore = 0;
         foreach(GameObject C in Caught)
@@ -86,7 +100,6 @@ public class Spear : MonoBehaviour {
             tempScore += Score[(int) C.GetComponent<Mob>().Type];
         }
         GameManager.Instance.Score += tempScore;
-        for (int i = 5; i < transform.childCount; i++) Destroy(transform.GetChild(i).gameObject);
         Count = 0;
         Caught.Clear();
     }

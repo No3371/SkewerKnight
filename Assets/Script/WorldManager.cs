@@ -25,7 +25,7 @@ public class WorldManager : MonoBehaviour {
 
     public int SpawnBurst = 5;
     public float ObjectSpawnModifer = 0.9f; //唯正
-    public float ObjectSpawnThreshold = 5f;
+    public float ObjectSpawnThreshold = 3f;
     public float SpawnThreshold = 10f;
 
     // Use this for initialization
@@ -104,13 +104,13 @@ public class WorldManager : MonoBehaviour {
     {
         if(Time.time - LastObjectSpawnTime > ObjectSpawnThreshold)
         {
-            if(Random.Range(0f, 100f) < Mathf.Pow(Mathf.Abs(Time.time - LastObjectSpawnTime), 2) * ObjectSpawnModifer)
+            if (Random.Range(0f, 100f) < Mathf.Pow(Mathf.Abs(Time.time - LastObjectSpawnTime), 2) * ObjectSpawnModifer)
             {
                 int id = Random.Range(0, 4);
                 GameObject temp;
-                if(id == 3)
+                if (id == 3)
                 {
-                    for(int i = 0; i < Random.Range(1, 5); i++)
+                    for (int i = 0; i < Random.Range(1, 5); i++)
                     {
                         temp = GameObject.Instantiate(Prefab_Objects[id]);
                         temp.transform.position = new Vector2(SpawnPosX + i * 1.5f, GroundY);
@@ -123,7 +123,7 @@ public class WorldManager : MonoBehaviour {
                     temp.transform.position = new Vector2(SpawnPosX, GroundY);
                     temp.transform.SetParent(World.transform);
                 }
-                
+
             }
             LastObjectSpawnTime = Time.time;
         }

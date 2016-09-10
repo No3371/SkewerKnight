@@ -45,7 +45,7 @@ public class Mob : MonoBehaviour {
             {
                 if ((Vector2)this.transform.localPosition == Position)
                 {
-                    this.transform.localPosition = Position;
+                    transform.localPosition = Position;
                 }
                 else
                 {
@@ -63,6 +63,7 @@ public class Mob : MonoBehaviour {
         MobManager.Instance.MobCount -= 1;
         this.transform.parent = Spear.transform;
         Spear.Count += Volume;
+        transform.rotation = new Quaternion(0, 0, 0, 0);
         PositionOnSpear = (Type == MobManager.MobType.Fat || Type == MobManager.MobType.BalloonFat) ? Spear.Count - 1 : Spear.Count;
         switch ((int)this.Type)
         {
@@ -86,7 +87,8 @@ public class Mob : MonoBehaviour {
                 {
                     Destroy((transform.FindChild("BallonB")).gameObject);
                 }
-                Position = Spear.PosList[PositionOnSpear];
+                if (PositionOnSpear > 4) Position = Spear.PosList[4];
+                else Position = Spear.PosList[PositionOnSpear];
                 Position.y = -0.5f;
                 break;
             default:

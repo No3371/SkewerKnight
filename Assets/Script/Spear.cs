@@ -20,8 +20,9 @@ public class Spear : MonoBehaviour {
     float LastAttackTime;
     public AudioSource[] Audiolist;
     public bool Lock = false;
-	// Use this for initialization
-	void Start () {
+    Component[] ChildRenderer;
+    // Use this for initialization
+    void Start () {
         BaseMouseY = Screen.height / 2;
         animator = GetComponent<Animator>();
         HorseFace = GameObject.Find("HorseFace").GetComponent<Animator>();
@@ -37,24 +38,18 @@ public class Spear : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(Count >= 5) Eat();
 
-        if ((Time.time - LastAttackTime > 0.5f))
+        if ((Time.time - LastAttackTime > 0.43f))
         {
             if (!Lock)
             {
                 if (Input.GetMouseButtonDown(0) )
                 {
-                    if(Count >= 5 && (transform.rotation.z > -10 || transform.rotation.z < 10))
-                    {
-                        Eat();
-                    }
-                    else
-                    {
                         SpearSound.Play();
                         Attacking = true;
                         animator.SetTrigger("Push");
                         LastAttackTime = Time.time;
-                    }
                 }
                 else Attacking = false;
             }
@@ -79,10 +74,15 @@ public class Spear : MonoBehaviour {
         {
             if (other.gameObject.layer == 9)
             {
+                GameObject Blood = MobManager.Instance.Blood;
+                GameObject temp = (GameObject)Instantiate(Blood,new Vector2(0,0) , new Quaternion());
+                temp.GetComponent<Blood>().Spear = this;
                 CaughtSound.Play();
                 other.GetComponent<Mob>().ifCaught = true;
                 other.GetComponent<Mob>().Spear = this;
                 Caught.Add(other.gameObject);
+                temp.GetComponent<Blood>().Position.x = PosList[other.GetComponent<Mob>().PositionOnSpear].x - 0.073f;
+                temp.GetComponent<Blood>().PositionOnSpear = other.GetComponent<Mob>().PositionOnSpear;
             }
         }
     }
@@ -106,7 +106,9 @@ public class Spear : MonoBehaviour {
 
     public void ToggleLock() {
         Lock = !Lock;
-        GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
+        ChildRenderer = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer child in ChildRenderer)
+            child.enabled = !child.enabled;
     }
 
 	void UpdateAngle()

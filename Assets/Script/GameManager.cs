@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour {
 
     public int Score = 0;
     public float ScrollSpeed, BaseSpeed =4f; //Character moving speed, based on difficulty
-    float Difficulty, DifficultyModifer = 0.74f; //Difficulty scale based on Score and Game time
-
+    float Difficulty; //Difficulty scale based on Score and Game time
+    public float DifficultyModifer = 0.74f;
     float GameStartTime;
 
     string Record;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour {
 
     float UpdateDifficulty()
     {
-        return (Score / 1000) * 0.5f + (Time.time - GameStartTime) / 10 * 0.5f;
+        return (Score / 3000) + (Time.time - GameStartTime) / 50;
     }
 
     void RecordAdd(int i) //Add new caught mob id to the record string, if record is longer then 5, CheckAchievemrnt().

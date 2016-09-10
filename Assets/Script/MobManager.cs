@@ -8,8 +8,8 @@ public class MobManager : MonoBehaviour {
     public float BaseSpawnTime = 1f;
     public float SpawnOffsetX = 5f;
     public float SpawnX;
-
-	public enum MobType {
+    public GameObject Blood;
+    public enum MobType {
 		Loser,
 		Elder,
 		Kid,

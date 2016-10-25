@@ -74,15 +74,10 @@ public class Spear : MonoBehaviour {
         {
             if (other.gameObject.layer == 9)
             {
-                GameObject Blood = MobManager.Instance.Blood;
-                GameObject temp = (GameObject)Instantiate(Blood,new Vector2(0,0) , new Quaternion());
-                temp.GetComponent<Blood>().Spear = this;
                 CaughtSound.Play();
                 other.GetComponent<Mob>().ifCaught = true;
                 other.GetComponent<Mob>().Spear = this;
                 Caught.Add(other.gameObject);
-                temp.GetComponent<Blood>().Position.x = PosList[other.GetComponent<Mob>().PositionOnSpear].x - 0.073f;
-                temp.GetComponent<Blood>().PositionOnSpear = other.GetComponent<Mob>().PositionOnSpear;
             }
         }
     }

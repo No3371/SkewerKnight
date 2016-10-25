@@ -65,35 +65,47 @@ public class Mob : MonoBehaviour {
         Spear.Count += Volume;
         transform.rotation = new Quaternion(0, 0, 0, 0);
         PositionOnSpear = (Type == MobManager.MobType.Fat || Type == MobManager.MobType.BalloonFat) ? Spear.Count - 1 : Spear.Count;
-        switch ((int)this.Type)
+
+		GameObject Blood = MobManager.Instance.Blood;
+		GameObject temp = (GameObject)Instantiate(Blood,new Vector2(0,0) , new Quaternion());
+        temp.GetComponent<Blood>().Mob = this;
+        temp.GetComponent<Blood>().MobNumber = (int)this.Type;
+		switch ((int)this.Type)
         {
-            case 0:
-            case 4:
-                Position = Spear.PosList[PositionOnSpear];
-                Position.y = -0.4f;
-                break;
-            case 1:
-            case 2:
-                Position = Spear.PosList[PositionOnSpear];
-                Position.y = -0.3f;
-                break;
-            case 3:
-                Position = Spear.PosList[PositionOnSpear];
-                Position.y = 0.09f;
-                break;
-            case 5:
-            case 6:
-                if ((transform.childCount == 1))
-                {
-                    Destroy((transform.FindChild("BallonB")).gameObject);
-                }
-                if (PositionOnSpear > 4) Position = Spear.PosList[4];
-                else Position = Spear.PosList[PositionOnSpear];
-                Position.y = -0.5f;
-                break;
-            default:
-                break;
+
+		case 0:
+			Position = Spear.PosList [PositionOnSpear];
+			Position.y = -0.4f;
+			break;
+		case 4:
+			Position = Spear.PosList [PositionOnSpear];
+			Position.y = -0.4f;
+            break;
+		case 1:
+		case 2:
+			Position = Spear.PosList [PositionOnSpear];
+			Position.y = -0.3f;
+            break;
+		case 3:
+			Position = Spear.PosList [PositionOnSpear];
+			Position.y = 0.09f;
+            break;
+		case 5:
+		case 6:
+			if ((transform.childCount == 1)) {
+				Destroy ((transform.FindChild ("BallonB")).gameObject);
+			}
+			if (PositionOnSpear > 4)
+				Position = Spear.PosList [4];
+			else
+				Position = Spear.PosList [PositionOnSpear];
+            Position.y = -0.5f;
+			break;
+        default:
+            break;
         }
+
+
     }
 
     void UpdatePos()

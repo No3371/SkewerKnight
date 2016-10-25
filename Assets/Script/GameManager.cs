@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
 
         Achieved = new List<int>();
         scoring = StartCoroutine(ScoringByTime());
+		Cursor.visible = false;
 	}
 	
 	// Update is called once per frame

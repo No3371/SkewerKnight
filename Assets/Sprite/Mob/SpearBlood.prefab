@@ -23,7 +23,7 @@ GameObject:
   - 95: {fileID: 95000014225860230}
   - 114: {fileID: 114000012995100932}
   m_Layer: 0
-  m_Name: Blood
+  m_Name: SpearBlood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860463288d611774ca10c287c5870f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spear: {fileID: 0}
+  Mob: {fileID: 0}
+  MobNumber: 0
 --- !u!212 &212000013924808646
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -99,8 +100,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: a3bb0fd7b3fc26045ba7d3b4579d84ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -42,55 +42,58 @@ public class Character : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         bool BSwitch = true; //BendSound switch
-
-		//basic move
-		transform.Translate(Vector3.right * GameManager.Instance.ScrollSpeed * Time.deltaTime);
-        //end basic move
-        
-        //input
-        if (Input.GetKeyDown(KeyCode.W) && State == CharacterState.Normal) {
-            GameManager.Instance.MainCamera.GetComponent<CameraController>().LockY = true;
-            JumpSound.Play();
-            State = CharacterState.Jumping;
-            jspeed = JumpPower;
-			transform.Translate(Vector3.up * (jspeed - gravity) * Time.deltaTime);
-            animator.SetBool("Jump", true);
-        }
-		else if(Input.GetKey(KeyCode.S) && State != CharacterState.Jumping)
+        if (GameManager.Instance.IsPlayed)
         {
-            if (State == CharacterState.Bending && ToggleSwitch)
+            //basic move
+            transform.Translate(Vector3.right * GameManager.Instance.ScrollSpeed * Time.deltaTime);
+            //end basic move
+
+            //input
+            if (Input.GetKeyDown(KeyCode.W) && State == CharacterState.Normal)
             {
-                ToggleSwitch = false;
+                GameManager.Instance.MainCamera.GetComponent<CameraController>().LockY = true;
+                JumpSound.Play();
+                State = CharacterState.Jumping;
+                jspeed = JumpPower;
+                transform.Translate(Vector3.up * (jspeed - gravity) * Time.deltaTime);
+                animator.SetBool("Jump", true);
+            }
+            else if (Input.GetKey(KeyCode.S) && State != CharacterState.Jumping)
+            {
+                if (State == CharacterState.Bending && ToggleSwitch)
+                {
+                    ToggleSwitch = false;
+                    Spear.GetComponent<Spear>().ToggleLock();
+                }
+                State = CharacterState.Bending;
+                animator.SetBool("Bending", true);
+            }
+            else if (Input.GetKeyUp(KeyCode.S))
+            {
+                ToggleSwitch = true;
                 Spear.GetComponent<Spear>().ToggleLock();
             }
-            State = CharacterState.Bending;
-            animator.SetBool("Bending", true);
-        }
-        else if (Input.GetKeyUp(KeyCode.S))
-        {
-            ToggleSwitch = true;
-            Spear.GetComponent<Spear>().ToggleLock();
-        }
-        else
-        {
-            if (State == CharacterState.Bending)
+            else
             {
-                if (State == CharacterState.Normal) Spear.GetComponent<Spear>().ToggleLock();
-                State = CharacterState.Normal;
-                animator.SetBool("Bending", false);
-                moving = false;
+                if (State == CharacterState.Bending)
+                {
+                    if (State == CharacterState.Normal) Spear.GetComponent<Spear>().ToggleLock();
+                    State = CharacterState.Normal;
+                    animator.SetBool("Bending", false);
+                    moving = false;
+                }
             }
-        }
-        if(!(State == CharacterState.Bending) && BSwitch)
-        {
-            BendSound.Play();
-            BSwitch = false;
-            HFS.enabled = true;
-        }
-        if ((State == CharacterState.Bending))
-        {
-            BSwitch = true;
-            HFS.enabled = false;
+            if (!(State == CharacterState.Bending) && BSwitch)
+            {
+                BendSound.Play();
+                BSwitch = false;
+                HFS.enabled = true;
+            }
+            if ((State == CharacterState.Bending))
+            {
+                BSwitch = true;
+                HFS.enabled = false;
+            }
         }
     }
 

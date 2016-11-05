@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour {
             }
             ScrollSpeed = UpdateSpeed();
             Difficulty = UpdateDifficulty();
+            Debug.Log(Difficulty);
         }
     }
 
@@ -122,5 +123,20 @@ public class GameManager : MonoBehaviour {
         ScoringBoard.SetActive(true);
         Cursor.visible = false;
         IsPlayed = true;
+    }
+
+    public void Restart()
+    {
+        Cursor.visible = false;
+        Score = 0;
+        GameStartTime = Time.time;
+        GameOverScreen.SetActive(false);
+        ScoringBoard.SetActive(true);
+        IsPlayed = true;
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

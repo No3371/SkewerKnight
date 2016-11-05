@@ -124,8 +124,17 @@ public class Character : MonoBehaviour {
         {
             if (other.tag == "Gate")
             {
-                if (State != CharacterState.Bending) GameManager.Instance.GameOver();
-            } else GameManager.Instance.GameOver();
+                if (State != CharacterState.Bending)
+                {
+                    Destroy(other.gameObject);
+                    GameManager.Instance.GameOver();
+                }
+            }
+            else
+            {
+                Destroy(other.gameObject);
+                GameManager.Instance.GameOver();
+            }
         } 
     }
     

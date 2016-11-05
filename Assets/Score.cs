@@ -11,7 +11,6 @@ public class Score : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("Scoring..");
         this.GetComponent<Text>().text = "Score: " + GameManager.Instance.Score;
 	}
 }

@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour {
         StopCoroutine(scoring);
         ScoringBoard.SetActive(false);
         GameOverScreen.SetActive(true);
-        MainCamera.GetComponent<AudioSource>().enabled = false;
+        MainCamera.GetComponent<AudioSource>().Stop();
         Cursor.visible = true;
     }
 
@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour {
         GameStartScreen.SetActive(false);
         ScoringBoard.SetActive(true);
         Cursor.visible = false;
+        MainCamera.GetComponent<AudioSource>().Play();
         IsPlayed = true;
     }
 
@@ -132,6 +133,7 @@ public class GameManager : MonoBehaviour {
         GameStartTime = Time.time;
         GameOverScreen.SetActive(false);
         ScoringBoard.SetActive(true);
+        MainCamera.GetComponent<AudioSource>().Play();
         IsPlayed = true;
     }
 

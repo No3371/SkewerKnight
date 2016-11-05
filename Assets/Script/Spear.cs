@@ -44,7 +44,7 @@ public class Spear : MonoBehaviour {
         {
             if (!Lock)
             {
-                if (Input.GetMouseButtonDown(0) )
+                if (Input.GetMouseButtonDown(0) && GameManager.Instance.IsPlayed)
                 {
                         SpearSound.Play();
                         Attacking = true;

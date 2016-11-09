@@ -50,7 +50,6 @@ public class MobManager : MonoBehaviour {
 		    MobCount += 1;
             MobId = Random.Range(0, MobList.Count);
             RanHigh = Random.Range(0f, 1f);
-            Debug.Log(RanHigh);
             if ((MobId == 3) || (MobId == 6))
             {
                 GameObject temp = (GameObject)Instantiate(MobList[MobId], new Vector2(SpawnX, WorldManager.Instance.GroundY + 1.5f + RanHigh), new Quaternion());

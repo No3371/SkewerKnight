@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
     public GameObject GameOverScreen;
     public GameObject GameStartScreen;
     public GameObject ScoringBoard;
+    public GameObject SettingScreen;
+    public GameObject Spear;
 
     public AchievementsData achievementData;
 
@@ -45,7 +47,6 @@ public class GameManager : MonoBehaviour {
             }
             ScrollSpeed = UpdateSpeed();
             Difficulty = UpdateDifficulty();
-            Debug.Log(Difficulty);
         }
     }
 
@@ -133,6 +134,9 @@ public class GameManager : MonoBehaviour {
         GameStartTime = Time.time;
         GameOverScreen.SetActive(false);
         ScoringBoard.SetActive(true);
+        for (int i = 5; i < Spear.transform.childCount; i++) Destroy(Spear.transform.GetChild(i).gameObject);
+        Spear.GetComponent<Spear>().Caught.Clear();
+        Spear.GetComponent<Spear>().Count = 0;
         MainCamera.GetComponent<AudioSource>().Play();
         IsPlayed = true;
     }
@@ -140,5 +144,15 @@ public class GameManager : MonoBehaviour {
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void Setting()
+    {
+        SettingScreen.SetActive(true);
+    }
+
+    public void SettingExit()
+    {
+        SettingScreen.SetActive(false);
     }
 }

@@ -107,7 +107,11 @@ public class Spear : MonoBehaviour {
         string AchieveString = new string(Achieve);
         foreach (AchievementsData.Achievement a in achievementData.List)
         {
-            if (a.Code == AchieveString) StartCoroutine(AchieveAchievement(a.Name));
+            if (a.Code == AchieveString)
+            {
+                PlayerPrefs.SetInt(AchieveString, 1);
+                StartCoroutine(AchieveAchievement(a.Name));
+            }
         }
         GameManager.Instance.Score += tempScore;
         Count = 0;
@@ -168,7 +172,6 @@ public class Spear : MonoBehaviour {
             animator.SetBool("hotdog", false);
             animator.SetBool("spear", true);
         }
-        animator.enabled = true;
     }
 
     IEnumerator AchieveAchievement(string Message)

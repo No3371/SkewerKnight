@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour {
 
@@ -12,6 +14,8 @@ public class GameManager : MonoBehaviour {
     public GameObject ScoringBoard;
     public GameObject SettingScreen;
     public GameObject Spear;
+    public GameObject AchieveScreen;
+    public GameObject Text;
 
     public AchievementsData achievementData;
 
@@ -33,7 +37,6 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(this);
         GameStartScreen.SetActive(true);
         Achieved = new List<int>();
-        scoring = StartCoroutine(ScoringByTime());
     }
 
     // Update is called once per frame
@@ -120,19 +123,30 @@ public class GameManager : MonoBehaviour {
 
     public void GameStart()
     {
+        Spear.GetComponent<Animator>().Play("Enter");
+        scoring = StartCoroutine(ScoringByTime());
         GameStartScreen.SetActive(false);
         ScoringBoard.SetActive(true);
         Cursor.visible = false;
         MainCamera.GetComponent<AudioSource>().Play();
         IsPlayed = true;
     }
-
+    public void BacktoMenu()
+    {
+        GameOverScreen.SetActive(false);
+        GameStartScreen.SetActive(true);
+        GameStartScreen.transform.GetChild(2).gameObject.SetActive(true);
+        GameStartScreen.transform.GetChild(3).gameObject.SetActive(false);
+    }
     public void Restart()
     {
+        Spear.GetComponent<Animator>().Play("Enter");
+        scoring = StartCoroutine(ScoringByTime());
         Cursor.visible = false;
         Score = 0;
         GameStartTime = Time.time;
         GameOverScreen.SetActive(false);
+        GameStartScreen.SetActive(false);
         ScoringBoard.SetActive(true);
         for (int i = 5; i < Spear.transform.childCount; i++) Destroy(Spear.transform.GetChild(i).gameObject);
         Spear.GetComponent<Spear>().Caught.Clear();
@@ -154,5 +168,24 @@ public class GameManager : MonoBehaviour {
     public void SettingExit()
     {
         SettingScreen.SetActive(false);
+    }
+
+    public void Achieve()
+    {
+        Text.GetComponent<Text>().text = "";
+        foreach (AchievementsData.Achievement a in achievementData.List)
+        {
+            if (PlayerPrefs.HasKey(a.Code))
+            {
+                Text.GetComponent<Text>().text += (a.Name + "\n");
+                Debug.Log("add!");
+            }
+        }
+        AchieveScreen.SetActive(true);
+    }
+
+    public void AchieveExit()
+    {
+        AchieveScreen.SetActive(false);
     }
 }

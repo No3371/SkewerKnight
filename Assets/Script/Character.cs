@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Character : MonoBehaviour {
 
@@ -71,7 +72,7 @@ public class Character : MonoBehaviour {
             else if (Input.GetKeyUp(KeyCode.S))
             {
                 ToggleSwitch = true;
-                Spear.GetComponent<Spear>().ToggleLock();
+                StartCoroutine(Uptime());
             }
             else
             {
@@ -137,6 +138,13 @@ public class Character : MonoBehaviour {
             }
         } 
     }
-    
 
+    IEnumerator Uptime()
+    {
+        for(float i = 0; i < 0.1 ; i += Time.deltaTime)
+        {
+            yield return 0;
+        }
+        Spear.GetComponent<Spear>().ToggleLock();
+    }
 }

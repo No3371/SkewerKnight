@@ -13,6 +13,8 @@ public class Mob : MonoBehaviour {
     float Ran;
     static float SlipDuration = 2f;
     Animator animator;
+    public int AchieveType;
+    public GameObject Particle;
     // Use this for initialization
     void Start () {
         animator = GetComponent<Animator>();
@@ -23,7 +25,9 @@ public class Mob : MonoBehaviour {
 			Volume = 3;
 		} else
 			Volume = 1;
-	}
+        if (Type == MobManager.MobType.BalloonFat) AchieveType = 6;
+        else AchieveType = (int)Type;
+    }
 
     // Update is called once per frame
     void Update()
@@ -58,6 +62,7 @@ public class Mob : MonoBehaviour {
 
     void Caught()
     {
+        Particle.SetActive(true);
         GetComponent<AudioSource>().Play();
         if(animator != null) animator.SetBool("die",true);
         MobManager.Instance.MobCount -= 1;
@@ -92,7 +97,7 @@ public class Mob : MonoBehaviour {
             break;
 		case 5:
 		case 6:
-			if ((transform.childCount == 1)) {
+			if ((transform.childCount == 2)) {
 				Destroy ((transform.FindChild ("BallonB")).gameObject);
 			}
 			if (PositionOnSpear > 4)

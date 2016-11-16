@@ -1889,7 +1889,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &837609194
 Transform:
   m_ObjectHideFlags: 0
@@ -2124,6 +2124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LockY: 0
+  Character: {fileID: 1529428400}
 --- !u!81 &891058454
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2833,6 +2834,7 @@ MonoBehaviour:
   Count: 0
   achievementData: {fileID: 11400000, guid: d0be2bb3f1b8c814da750c4bd4b0dd68, type: 2}
   AchieveMessage: {fileID: 1441592346}
+  HorseFaceObj: {fileID: 837609193}
   Caught: []
   PosList: []
   Audiolist: []
@@ -3880,7 +3882,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   ToggleSwitch: 1
   Audiolist: []
-  Spear: {fileID: 0}
+  Spear: {fileID: 1219875229}
+  Busti: 0
+  BustStatus: 0
 --- !u!61 &1529428405
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4261,10 +4265,13 @@ MonoBehaviour:
   AchieveScreen: {fileID: 543012645}
   Text: {fileID: 1509642297}
   achievementData: {fileID: 11400000, guid: d0be2bb3f1b8c814da750c4bd4b0dd68, type: 2}
+  BustScore: 2000
   Score: 0
+  ScoreforDiff: 0
   ScrollSpeed: 0
   BaseSpeed: 4
-  DifficultyModifer: 0.74
+  DifficultyModifer: 0.5
+  Busted: 0
   IsPlayed: 0
 --- !u!4 &1607266189
 Transform:
@@ -4307,13 +4314,13 @@ MonoBehaviour:
   SpawnX: 0
   Blood: {fileID: 1000013966876788, guid: c9aecc7e942822a49b76c142eb4a9dd9, type: 2}
   MobList:
-  - {fileID: 1000014027578450, guid: dd18e551228e34bbab05de9877bdd8e6, type: 2}
-  - {fileID: 1000011273667376, guid: 5b9634ba17090467ebe5249459b5e881, type: 2}
-  - {fileID: 1000012659676734, guid: 0ef76c56faf8b40a49ce74c424db5746, type: 2}
-  - {fileID: 1000012138513814, guid: fb86d60cef8164bb98e48b606c523e0a, type: 2}
-  - {fileID: 1000011487487030, guid: e5085828abefe4b569586d8f710006e4, type: 2}
-  - {fileID: 1000013472895922, guid: 3f1bd28c99d2f48c28333533fe9c9837, type: 2}
-  - {fileID: 1000010110537356, guid: 7d04f06d6276a334fb9fc67b87ba88d1, type: 2}
+  - {fileID: 1000010077645096, guid: dd18e551228e34bbab05de9877bdd8e6, type: 2}
+  - {fileID: 1000010214157866, guid: 5b9634ba17090467ebe5249459b5e881, type: 2}
+  - {fileID: 1000012406569670, guid: 0ef76c56faf8b40a49ce74c424db5746, type: 2}
+  - {fileID: 1000012681895758, guid: fb86d60cef8164bb98e48b606c523e0a, type: 2}
+  - {fileID: 1000013448132324, guid: e5085828abefe4b569586d8f710006e4, type: 2}
+  - {fileID: 1000012493690574, guid: 3f1bd28c99d2f48c28333533fe9c9837, type: 2}
+  - {fileID: 1000013385685754, guid: 7d04f06d6276a334fb9fc67b87ba88d1, type: 2}
 --- !u!1 &1615771081
 GameObject:
   m_ObjectHideFlags: 0

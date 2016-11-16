@@ -16,17 +16,16 @@ public class GameManager : MonoBehaviour {
     public GameObject Spear;
     public GameObject AchieveScreen;
     public GameObject Text;
-
     public AchievementsData achievementData;
-
-    public int Score = 0;
+    public int BustScore;
+    public int Score = 0, ScoreforDiff = 0;
     public float ScrollSpeed, BaseSpeed = 4f; //Character moving speed, based on difficulty
     float Difficulty; //Difficulty scale based on Score and Game time
     public float DifficultyModifer = 0.74f;
     float GameStartTime;
-
+    public bool Busted = false;
     string Record;
-
+    bool testcheck = false;
     Coroutine scoring;
     bool checkTime = true;
     public bool IsPlayed = false;
@@ -48,7 +47,8 @@ public class GameManager : MonoBehaviour {
                 GameStartTime = Time.time;
                 checkTime = false;
             }
-            ScrollSpeed = UpdateSpeed();
+            if (!Busted) ScrollSpeed = UpdateSpeed();
+            else ScrollSpeed = 20f;
             Difficulty = UpdateDifficulty();
         }
     }
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
 
     float UpdateDifficulty()
     {
-        return (Score / 3000) + (Time.time - GameStartTime) / 50;
+        return (ScoreforDiff / 3000) + (Time.time - GameStartTime) / 50;
     }
 
     void RecordAdd(int i) //Add new caught mob id to the record string, if record is longer then 5, CheckAchievemrnt().
@@ -106,10 +106,18 @@ public class GameManager : MonoBehaviour {
         while (true)
         {
             Score += (int)((Time.time - GameStartTime) * (Time.time - GameStartTime) / 30);
+            ScoreforDiff += (int)((Time.time - GameStartTime) * (Time.time - GameStartTime) / 30);
+            if (Score >= BustScore && !testcheck)
+            {
+                testcheck = true;
+                Busted = true;
+                ScrollSpeed = 20f;
+                BustScore += BustScore;
+                StartCoroutine(Character.GetComponent<Character>().Bust());
+            }
             yield return new WaitForSeconds(1f);
         }
     }
-
     public void GameOver()
     {
         IsPlayed = false;
@@ -144,6 +152,7 @@ public class GameManager : MonoBehaviour {
         scoring = StartCoroutine(ScoringByTime());
         Cursor.visible = false;
         Score = 0;
+        ScoreforDiff = 0;
         GameStartTime = Time.time;
         GameOverScreen.SetActive(false);
         GameStartScreen.SetActive(false);

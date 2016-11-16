@@ -25,8 +25,12 @@ public class Character : MonoBehaviour {
     public GameObject Spear;
     GameObject HorseFace;
     SpriteRenderer HFS;
-	// Use this for initialization
-	void Start () {
+    bool Invincible = false;
+    public float Busti;
+    public int BustStatus = 0;
+
+    // Use this for initialization
+    void Start () {
         HorseFace = transform.Find("HorseFace").gameObject;
         HFS = HorseFace.GetComponent<SpriteRenderer>();
         State = CharacterState.Normal;
@@ -36,8 +40,6 @@ public class Character : MonoBehaviour {
         JumpSound = Audiolist[0];
         BendSound = Audiolist[1];
         GrY = WorldManager.Instance.GroundY;
-
-        Spear = GetComponentInChildren<Spear>().gameObject;
     }
 	
 	// Update is called once per frame
@@ -50,7 +52,7 @@ public class Character : MonoBehaviour {
             //end basic move
 
             //input
-            if (Input.GetKeyDown(KeyCode.W) && State == CharacterState.Normal)
+            if (Input.GetKeyDown(KeyCode.W) && State == CharacterState.Normal && !GameManager.Instance.Busted)
             {
                 GameManager.Instance.MainCamera.GetComponent<CameraController>().LockY = true;
                 JumpSound.Play();
@@ -59,7 +61,7 @@ public class Character : MonoBehaviour {
                 transform.Translate(Vector3.up * (jspeed - gravity) * Time.deltaTime);
                 animator.SetBool("Jump", true);
             }
-            else if (Input.GetKey(KeyCode.S) && State != CharacterState.Jumping)
+            else if (Input.GetKey(KeyCode.S) && State != CharacterState.Jumping && !GameManager.Instance.Busted)
             {
                 if (State == CharacterState.Bending && ToggleSwitch)
                 {
@@ -69,7 +71,7 @@ public class Character : MonoBehaviour {
                 State = CharacterState.Bending;
                 animator.SetBool("Bending", true);
             }
-            else if (Input.GetKeyUp(KeyCode.S))
+            else if (Input.GetKeyUp(KeyCode.S) && !GameManager.Instance.Busted)
             {
                 ToggleSwitch = true;
                 StartCoroutine(Uptime());
@@ -121,22 +123,58 @@ public class Character : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.layer == 8)
+        if (Invincible)
         {
-            if (other.tag == "Gate")
+            GameManager.Instance.Score += 150;
+            Destroy(other.gameObject);
+            MobManager.Instance.MobCount--;
+        }
+        else
+        {
+            if (other.gameObject.layer == 8)
             {
-                if (State != CharacterState.Bending)
+                if (other.tag == "Gate")
+                {
+                    if (State != CharacterState.Bending)
+                    {
+                        Destroy(other.gameObject);
+                        GameManager.Instance.GameOver();
+                    }
+                }
+                else
                 {
                     Destroy(other.gameObject);
                     GameManager.Instance.GameOver();
                 }
             }
-            else
+        }
+    }
+
+    public IEnumerator Bust()
+    {
+        for (int i = 5; i < Spear.transform.childCount; i++) Destroy(Spear.transform.GetChild(i).gameObject);
+        Spear.GetComponent<Spear>().Count = 0;
+        Spear.GetComponent<Spear>().Caught.Clear();
+        Invincible = true;
+        for(Busti = 0; Busti < 6; Busti += Time.deltaTime)
+        {
+            if (Busti < 1f)
             {
-                Destroy(other.gameObject);
-                GameManager.Instance.GameOver();
+                BustStatus = 1;
+                transform.localScale += new Vector3(Time.deltaTime * 5, Time.deltaTime * 5, 0);
             }
-        } 
+            else if (Busti > 5f)
+            {
+                BustStatus = 2;
+                transform.localScale -= new Vector3(Time.deltaTime * 5, Time.deltaTime * 5, 0);
+            }
+            else BustStatus = 0;
+            yield return 0;
+        }
+        BustStatus = 0;
+        transform.localScale = new Vector3(1, 1, 1);
+        Invincible = false;
+        GameManager.Instance.Busted = false;
     }
 
     IEnumerator Uptime()

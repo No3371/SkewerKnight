@@ -47,7 +47,7 @@ public class MobManager : MonoBehaviour {
         Collider2D[] col = Physics2D.OverlapCircleAll (new Vector2 (SpawnX, WorldManager.Instance.GroundY + 0.5f), 0.5f, 1 << 10);
         if (col.Length == 0)
         {
-		    MobCount += 1;
+		    MobCount++;
             MobId = Random.Range(0, MobList.Count);
             RanHigh = Random.Range(0f, 1f);
             if ((MobId == 3) || (MobId == 6))

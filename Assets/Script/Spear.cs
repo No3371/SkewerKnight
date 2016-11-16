@@ -16,6 +16,7 @@ public class Spear : MonoBehaviour {
     public int Count; //0~5
     public AchievementsData achievementData;
     public GameObject AchieveMessage;
+    public GameObject HorseFaceObj;
 
     List<AudioClip> SoundList = new List<AudioClip>();
 
@@ -31,7 +32,7 @@ public class Spear : MonoBehaviour {
     {
         BaseMouseY = Screen.height / 2;
         animator = GetComponent<Animator>();
-        HorseFace = GameObject.Find("HorseFace").GetComponent<Animator>();
+        HorseFace = HorseFaceObj.GetComponent<Animator>();
         Audiolist = GetComponents<AudioSource>();
         SpearSound = Audiolist[0];
         CaughtSound = Audiolist[1];
@@ -44,11 +45,14 @@ public class Spear : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Count >= 5) Eat();
-
+        if (Count >= 5)
+        {
+            HorseFaceObj.SetActive(true);
+            Eat();
+        }
         if ((Time.time - LastAttackTime > 0.43f))
         {
-            if (!Lock && GameManager.Instance.IsPlayed)
+            if (!Lock && GameManager.Instance.IsPlayed && !GameManager.Instance.Busted)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -61,15 +65,20 @@ public class Spear : MonoBehaviour {
             }
         }
 
-        if(!Lock && GameManager.Instance.IsPlayed) UpdateAngle();
+        if(!Lock && GameManager.Instance.IsPlayed && !GameManager.Instance.Busted) UpdateAngle();
+        if(GameManager.Instance.Busted) transform.localEulerAngles = new Vector3(0, 0, 0);
 
         if (EatTime != 0)
         {
             if ((Time.time - EatTime) > EatDelay)
             {
                 for (int i = 5; i < transform.childCount; i++) Destroy(transform.GetChild(i).gameObject);
-                EatTime = 0;
                 GetComponent<CircleCollider2D>().enabled = true;
+            }
+            if(Time.time - EatTime > 1)
+            {
+                EatTime = 0;
+                HorseFaceObj.SetActive(false);
             }
         }
     }
@@ -100,7 +109,7 @@ public class Spear : MonoBehaviour {
         int tempScore = 0,i = 0;
         foreach(GameObject C in Caught)
         {
-            Achieve[i++] = (char)(C.GetComponent<Mob>().Type + 49);
+            Achieve[i++] = (char)(C.GetComponent<Mob>().AchieveType + 49);
             tempScore += Score[(int) C.GetComponent<Mob>().Type];
         }
         Array.Sort(Achieve);
@@ -114,6 +123,7 @@ public class Spear : MonoBehaviour {
             }
         }
         GameManager.Instance.Score += tempScore;
+        GameManager.Instance.ScoreforDiff += tempScore;
         Count = 0;
         Caught.Clear();
     }
@@ -123,6 +133,13 @@ public class Spear : MonoBehaviour {
         ChildRenderer = GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer child in ChildRenderer)
             child.enabled = !child.enabled;
+        ParticleSystem[] ps = GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem child in ps)
+        {
+            if (child.isStopped) child.Play();
+            else child.Stop();
+        }
+
     }
 
 	void UpdateAngle()

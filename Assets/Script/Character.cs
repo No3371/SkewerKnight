@@ -10,7 +10,7 @@ public class Character : MonoBehaviour {
         Bending
     }
 
-    CharacterState State;
+    public CharacterState State;
     
 	public bool moving;
 	public float jspeed = 0f;
@@ -20,7 +20,7 @@ public class Character : MonoBehaviour {
 	public float GrY;
 	public Animator animator;
     public bool ToggleSwitch = true;
-    AudioSource JumpSound, BendSound;
+    AudioSource JumpSound, BendSound, BustSound;
     public AudioSource[] Audiolist;
     public GameObject Spear;
     GameObject HorseFace;
@@ -39,6 +39,7 @@ public class Character : MonoBehaviour {
         Audiolist = GetComponents<AudioSource>();
         JumpSound = Audiolist[0];
         BendSound = Audiolist[1];
+        BustSound = Audiolist[2];
         GrY = WorldManager.Instance.GroundY;
     }
 	
@@ -152,6 +153,20 @@ public class Character : MonoBehaviour {
 
     public IEnumerator Bust()
     {
+        BustSound.Play();
+        //GameManager.Instance.MainCamera.GetComponent<AudioSource>().volume = 0.8f;
+        //GameManager.Instance.MainCamera.GetComponent<AudioSource>().pitch = 1.2f;
+        if (State == CharacterState.Bending)
+        {
+            ToggleSwitch = true;
+            Spear.GetComponent<Spear>().ToggleLock();
+        }
+        else if(State == CharacterState.Jumping)
+        {
+            animator.SetBool("JumpBack", false);
+            animator.SetBool("Jump", false);
+            animator.Play("Normal");
+        }
         for (int i = 5; i < Spear.transform.childCount; i++) Destroy(Spear.transform.GetChild(i).gameObject);
         Spear.GetComponent<Spear>().Count = 0;
         Spear.GetComponent<Spear>().Caught.Clear();
@@ -160,23 +175,28 @@ public class Character : MonoBehaviour {
         {
             if (Busti < 1f)
             {
+                GameManager.Instance.MainCamera.GetComponent<AudioSource>().pitch += (Time.deltaTime * 0.2f);
+                GameManager.Instance.MainCamera.GetComponent<AudioSource>().volume -= (Time.deltaTime * 0.2f);
                 BustStatus = 1;
                 transform.localScale += new Vector3(Time.deltaTime * 5, Time.deltaTime * 5, 0);
             }
             else if (Busti > 5f)
             {
+                GameManager.Instance.MainCamera.GetComponent<AudioSource>().pitch -= (Time.deltaTime * 0.2f);
+                GameManager.Instance.MainCamera.GetComponent<AudioSource>().volume += (Time.deltaTime * 0.2f);
                 BustStatus = 2;
                 transform.localScale -= new Vector3(Time.deltaTime * 5, Time.deltaTime * 5, 0);
             }
             else BustStatus = 0;
             yield return 0;
         }
+        GameManager.Instance.MainCamera.GetComponent<AudioSource>().volume = 1f;
+        GameManager.Instance.MainCamera.GetComponent<AudioSource>().pitch = 1f;
         BustStatus = 0;
         transform.localScale = new Vector3(1, 1, 1);
         Invincible = false;
         GameManager.Instance.Busted = false;
     }
-
     IEnumerator Uptime()
     {
         for(float i = 0; i < 0.1 ; i += Time.deltaTime)

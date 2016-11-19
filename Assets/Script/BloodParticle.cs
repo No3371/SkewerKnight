@@ -20,7 +20,7 @@ public class BloodParticle : MonoBehaviour
         var sh = ps.shape;
         sh.angle = 50;
         ps.startLifetime = 0.28f;
-        ps.startSize = 0.1f;
+        ps.startSize = 0.15f;
     }
 
     // Update is called once per frame
@@ -36,11 +36,20 @@ public class BloodParticle : MonoBehaviour
 
     IEnumerator PS()
     {
-        int rate = 1;
+        float rate = 1;
         var em = ps.emission;
+        for(int i = 0;i < 10; i++)
+        {
+            for (float j = 0; j < 0.2; j += Time.deltaTime)
+            {
+                yield return 0;
+            }
+            rate += 1.5f;
+            em.rate = rate;
+        }
         while (true)
         {
-            for (float i = 0; i < 1.5; i += Time.deltaTime)
+            for (float i = 0; i < 2; i += Time.deltaTime)
             {
                 yield return 0;
             }

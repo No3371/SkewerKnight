@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public static GameManager Instance;
 
@@ -27,8 +28,9 @@ public class GameManager : MonoBehaviour {
     string Record;
     bool testcheck = false;
     Coroutine scoring;
-    bool checkTime = true;
     public bool IsPlayed = false;
+    public AudioSource Menu, ButtonDo, ButtonUp ,Giggle;
+    AudioSource[] Audiolist;
     // Use this for initialization
     void Start() {
         if (Instance == null) Instance = this;
@@ -36,17 +38,17 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(this);
         GameStartScreen.SetActive(true);
         Achieved = new List<int>();
+        Audiolist = GetComponents<AudioSource>();
+        Menu = Audiolist[0];
+        ButtonDo = Audiolist[1];
+        ButtonUp = Audiolist[2];
+        Giggle = Audiolist[3];
     }
 
     // Update is called once per frame
     void Update() {
         if (IsPlayed)
         {
-            if (checkTime)
-            {
-                GameStartTime = Time.time;
-                checkTime = false;
-            }
             if (!Busted) ScrollSpeed = UpdateSpeed();
             else ScrollSpeed = 20f;
             Difficulty = UpdateDifficulty();
@@ -131,6 +133,8 @@ public class GameManager : MonoBehaviour {
 
     public void GameStart()
     {
+        GameStartTime = Time.time;
+        Menu.Stop();
         Spear.GetComponent<Animator>().Play("Enter");
         scoring = StartCoroutine(ScoringByTime());
         GameStartScreen.SetActive(false);
@@ -141,6 +145,7 @@ public class GameManager : MonoBehaviour {
     }
     public void BacktoMenu()
     {
+        Menu.Play();
         GameOverScreen.SetActive(false);
         GameStartScreen.SetActive(true);
         GameStartScreen.transform.GetChild(2).gameObject.SetActive(true);
@@ -148,6 +153,7 @@ public class GameManager : MonoBehaviour {
     }
     public void Restart()
     {
+        Menu.Stop();
         Spear.GetComponent<Animator>().Play("Enter");
         scoring = StartCoroutine(ScoringByTime());
         Cursor.visible = false;
@@ -196,5 +202,10 @@ public class GameManager : MonoBehaviour {
     public void AchieveExit()
     {
         AchieveScreen.SetActive(false);
+    }
+    
+    public void ButtonU()
+    {
+        ButtonUp.Play();
     }
 }

@@ -1,3 +1,3 @@
 # SkewerKnight
-A Student Game Jam  Entry
+A Student Game Jam  project
 fuck git

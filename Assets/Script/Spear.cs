@@ -26,6 +26,7 @@ public class Spear : MonoBehaviour {
     float LastAttackTime;
     public AudioSource[] Audiolist;
     public bool Lock = false;
+    bool check;
     Component[] ChildRenderer;
     // Use this for initialization
     void Start ()
@@ -65,7 +66,18 @@ public class Spear : MonoBehaviour {
             }
         }
 
-        if(!Lock && GameManager.Instance.IsPlayed && !GameManager.Instance.Busted) UpdateAngle();
+        if (!Lock && GameManager.Instance.IsPlayed && !GameManager.Instance.Busted)
+        {
+            #if !UNITY_EDITOR && (UNITY_IOS || UNITY_ANDROID)
+ 
+            MobileUpdateAngle();
+ 
+            #else
+
+            UpdateAngle();
+
+            #endif
+        }
         if(GameManager.Instance.Busted) transform.localEulerAngles = new Vector3(0, 0, 0);
 
         if (EatTime != 0)
@@ -141,8 +153,46 @@ public class Spear : MonoBehaviour {
         }
 
     }
+    void MobileUpdateAngle()
+    {
+        float angle = transform.localEulerAngles.z;
+        if (Input.touchCount <= 0) return;
+        if(Input.touchCount == 2)
+        {
+            if((Input.touches[0].phase == TouchPhase.Began) &&(Input.touches[0].position.x < 0))
+            {
+                check = true;
+            }
+            else if((Input.touches[1].phase == TouchPhase.Began) && (Input.touches[1].position.x < 0))
+            {
+                check = false;
+            }
+            if(check)
+            {
+                if (Input.touches[0].phase == TouchPhase.Moved)
+                {
+                    angle -= Input.touches[0].deltaPosition.y * Time.deltaTime;
+                    if (angle < 0) angle += 360f;
+                    if (angle > 90 && angle < 180) angle = 90f;
+                    else if (angle > 180 && angle < 340) angle = 340f;
+                    transform.localEulerAngles = new Vector3(0, 0, angle);
+                }
+            }
+            else
+            {
+                if (Input.touches[1].phase == TouchPhase.Moved)
+                {
+                    angle -= Input.touches[1].deltaPosition.y * Time.deltaTime;
+                    if (angle < 0) angle += 360f;
+                    if (angle > 90 && angle < 180) angle = 90f;
+                    else if (angle > 180 && angle < 340) angle = 340f;
+                    transform.localEulerAngles = new Vector3(0, 0, angle);
+                }
+            }
+        }
+    }
 
-	void UpdateAngle()
+    void UpdateAngle()
     {
         float angle = (Input.mousePosition.y - BaseMouseY) / 10;
         if (angle > 0) angle = (Input.mousePosition.y - BaseMouseY) / 5;

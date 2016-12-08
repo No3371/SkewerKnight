@@ -55,16 +55,18 @@ public class Spear : MonoBehaviour {
         {
             if (!Lock && GameManager.Instance.IsPlayed && !GameManager.Instance.Busted)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (InputManager.Instance.attack)
                 {
-                        SpearSound.Play();
-                        Attacking = true;
-                        animator.SetTrigger("Push");
-                        LastAttackTime = Time.time;
+                    InputManager.Instance.attack = false;
+                    SpearSound.Play();
+                    Attacking = true;
+                    animator.SetTrigger("Push");
+                    LastAttackTime = Time.time;
                 }
                 else Attacking = false;
             }
         }
+        else InputManager.Instance.attack = false;
 
         if (!Lock && GameManager.Instance.IsPlayed && !GameManager.Instance.Busted)
         {
@@ -155,39 +157,22 @@ public class Spear : MonoBehaviour {
     }
     void MobileUpdateAngle()
     {
-        float angle = transform.localEulerAngles.z;
-        if (Input.touchCount <= 0) return;
-        if(Input.touchCount == 2)
+        float angle = 0;
+        int LeftNumber = 0;
+        int n = -1;
+        for(int i = 0; i< Input.touchCount;i++) if (Input.touches[i].position.x < 0) LeftNumber++;
+        if (LeftNumber > 1) return;
+        else
         {
-            if((Input.touches[0].phase == TouchPhase.Began) &&(Input.touches[0].position.x < 0))
+            for (int i = 0; i < Input.touchCount; i++) if (Input.touches[i].position.x < 0) n = i;
+            if ((Input.touches[n].phase == TouchPhase.Began)) angle = transform.localEulerAngles.z;
+            else if (Input.touches[n].phase == TouchPhase.Moved)
             {
-                check = true;
-            }
-            else if((Input.touches[1].phase == TouchPhase.Began) && (Input.touches[1].position.x < 0))
-            {
-                check = false;
-            }
-            if(check)
-            {
-                if (Input.touches[0].phase == TouchPhase.Moved)
-                {
-                    angle -= Input.touches[0].deltaPosition.y * Time.deltaTime;
-                    if (angle < 0) angle += 360f;
-                    if (angle > 90 && angle < 180) angle = 90f;
-                    else if (angle > 180 && angle < 340) angle = 340f;
-                    transform.localEulerAngles = new Vector3(0, 0, angle);
-                }
-            }
-            else
-            {
-                if (Input.touches[1].phase == TouchPhase.Moved)
-                {
-                    angle -= Input.touches[1].deltaPosition.y * Time.deltaTime;
-                    if (angle < 0) angle += 360f;
-                    if (angle > 90 && angle < 180) angle = 90f;
-                    else if (angle > 180 && angle < 340) angle = 340f;
-                    transform.localEulerAngles = new Vector3(0, 0, angle);
-                }
+                angle -= Input.touches[n].deltaPosition.y * Time.deltaTime;
+                if (angle < 0) angle += 360f;
+                if (angle > 90 && angle < 180) angle = 90f;
+                else if (angle > 180 && angle < 340) angle = 340f;
+                transform.localEulerAngles = new Vector3(0, 0, angle);
             }
         }
     }

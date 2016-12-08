@@ -53,7 +53,7 @@ public class Character : MonoBehaviour {
             //end basic move
 
             //input
-            if (Input.GetKeyDown(KeyCode.W) && State == CharacterState.Normal && !GameManager.Instance.Busted)
+            if (InputManager.Instance.jump && State == CharacterState.Normal && !GameManager.Instance.Busted)
             {
                 GameManager.Instance.MainCamera.GetComponent<CameraController>().LockY = true;
                 JumpSound.Play();
@@ -62,7 +62,7 @@ public class Character : MonoBehaviour {
                 transform.Translate(Vector3.up * (jspeed - gravity) * Time.deltaTime);
                 animator.SetBool("Jump", true);
             }
-            else if (Input.GetKey(KeyCode.S) && State != CharacterState.Jumping && !GameManager.Instance.Busted)
+            else if (InputManager.Instance.bind && State != CharacterState.Jumping && !GameManager.Instance.Busted)
             {
                 if (State == CharacterState.Bending && ToggleSwitch)
                 {
@@ -72,13 +72,17 @@ public class Character : MonoBehaviour {
                 State = CharacterState.Bending;
                 animator.SetBool("Bending", true);
             }
-            else if (Input.GetKeyUp(KeyCode.S) && !GameManager.Instance.Busted)
+            else if (InputManager.Instance.bindup && !GameManager.Instance.Busted)
             {
+                InputManager.Instance.bind = false;
+                InputManager.Instance.bindup = false;
                 ToggleSwitch = true;
                 StartCoroutine(Uptime());
             }
             else
             {
+                InputManager.Instance.bind = false;
+                InputManager.Instance.bindup = false;
                 if (State == CharacterState.Bending)
                 {
                     if (State == CharacterState.Normal) Spear.GetComponent<Spear>().ToggleLock();
@@ -109,6 +113,7 @@ public class Character : MonoBehaviour {
 			jspeed -= 0.14f;
             if (this.transform.position.y <= GrY) //µÛ¦a
             {
+                InputManager.Instance.jump = false;
                 jspeed = 0;
                 GameManager.Instance.MainCamera.GetComponent<CameraController>().LockY = false;
                 State = CharacterState.Normal;

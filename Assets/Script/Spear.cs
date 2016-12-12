@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Spear : MonoBehaviour {
 	public bool Attacking = false;
 	public float BaseMouseY;
+    public float LeftSide;
     public float EatDelay = 0.1f;
 	public GameObject Character;
     Animator animator, HorseFace;
@@ -17,6 +18,7 @@ public class Spear : MonoBehaviour {
     public AchievementsData achievementData;
     public GameObject AchieveMessage;
     public GameObject HorseFaceObj;
+    //public GameObject debug;
 
     List<AudioClip> SoundList = new List<AudioClip>();
 
@@ -27,10 +29,13 @@ public class Spear : MonoBehaviour {
     public AudioSource[] Audiolist;
     public bool Lock = false;
     bool check;
+    float Mangle;
     Component[] ChildRenderer;
     // Use this for initialization
     void Start ()
     {
+        Mangle = 0;
+        LeftSide = Screen.width / 2;
         BaseMouseY = Screen.height / 2;
         animator = GetComponent<Animator>();
         HorseFace = HorseFaceObj.GetComponent<Animator>();
@@ -70,15 +75,11 @@ public class Spear : MonoBehaviour {
 
         if (!Lock && GameManager.Instance.IsPlayed && !GameManager.Instance.Busted)
         {
-            #if !UNITY_EDITOR && (UNITY_IOS || UNITY_ANDROID)
- 
+#if !UNITY_EDITOR && (UNITY_IOS || UNITY_ANDROID)
             MobileUpdateAngle();
- 
-            #else
-
+#else
             UpdateAngle();
-
-            #endif
+#endif
         }
         if(GameManager.Instance.Busted) transform.localEulerAngles = new Vector3(0, 0, 0);
 
@@ -115,7 +116,6 @@ public class Spear : MonoBehaviour {
 
     void Eat()
     {
-        char temp;
         Achieve = new char[Caught.Count];
         GetComponent<CircleCollider2D>().enabled = false;
         EatTime = Time.time;
@@ -142,7 +142,8 @@ public class Spear : MonoBehaviour {
         Caught.Clear();
     }
 
-    public void ToggleLock() {
+    public void ToggleLock()
+    {
         Lock = !Lock;
         ChildRenderer = GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer child in ChildRenderer)
@@ -157,24 +158,32 @@ public class Spear : MonoBehaviour {
     }
     void MobileUpdateAngle()
     {
-        float angle = 0;
         int LeftNumber = 0;
         int n = -1;
-        for(int i = 0; i< Input.touchCount;i++) if (Input.touches[i].position.x < 0) LeftNumber++;
-        if (LeftNumber > 1) return;
-        else
+        for (int i = 0; i < Input.touchCount; i++)
         {
-            for (int i = 0; i < Input.touchCount; i++) if (Input.touches[i].position.x < 0) n = i;
-            if ((Input.touches[n].phase == TouchPhase.Began)) angle = transform.localEulerAngles.z;
-            else if (Input.touches[n].phase == TouchPhase.Moved)
+            if (Input.touches[i].position.x < LeftSide)
             {
-                angle -= Input.touches[n].deltaPosition.y * Time.deltaTime;
-                if (angle < 0) angle += 360f;
-                if (angle > 90 && angle < 180) angle = 90f;
-                else if (angle > 180 && angle < 340) angle = 340f;
-                transform.localEulerAngles = new Vector3(0, 0, angle);
+                n = i;
+                LeftNumber++;
             }
         }
+        if (LeftNumber != 1) return;
+        else
+        {
+                if (Input.touches[n].phase == TouchPhase.Began) Mangle = transform.localEulerAngles.z;
+                else if (Input.touches[n].phase == TouchPhase.Moved)
+                {
+                    Mangle += (Input.touches[n].deltaPosition.y * Time.deltaTime) * 100;
+                    if (Mangle < 0) Mangle += 360f;
+                    if (Mangle > 90 && Mangle < 180) Mangle = 90f;
+                    else if (Mangle > 180 && Mangle < 340) Mangle = 340f;
+                    //debug.GetComponent<Text>().text = "left move" + Mangle;
+                    transform.localEulerAngles = new Vector3(0, 0, Mangle);
+                }
+                else if (Input.touches[n].phase == TouchPhase.Ended) Mangle = 0;
+        }
+        //debug.GetComponent<Text>().text = "left" + Input.touches[n].position;
     }
 
     void UpdateAngle()

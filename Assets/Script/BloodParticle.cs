@@ -7,6 +7,8 @@ public class BloodParticle : MonoBehaviour
     ParticleSystem ps;
     Quaternion iniRot;
     bool check;
+    float preSpearz;
+    public float angle;
     void Awake()
     {
         iniRot = transform.rotation;
@@ -26,12 +28,37 @@ public class BloodParticle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enabled == true && !check)
-        {
-            check = !check;
-            transform.rotation = iniRot;
-            StartCoroutine(PS());
-        }
+        angle = 0.2f;
+        var em = ps.emission;
+        Vector3 v = new Vector3();
+        float spearz;
+        //if (enabled == true && !check)
+        //{
+        //    check = !check;
+        //    transform.rotation = iniRot;
+        //    StartCoroutine(PS());
+        //}
+        //spearz = GameManager.Instance.Spear.transform.localEulerAngles.z;
+        //if (spearz > 90) spearz -= 360;
+        ////else if (spearz < 90) spearz -= 360;
+        //if ((preSpearz - spearz) != 0)
+        //{
+        //    ps.startLifetime = 0.5f;
+        //    v = transform.rotation.eulerAngles;
+        //    v.x -= (preSpearz - spearz) *angle;
+        //    Debug.Log((preSpearz - spearz) * angle);
+        //    transform.rotation = Quaternion.Euler(v);
+        //    em.rate = em.rate.constant * 1.2f;
+        //    //ps.startSpeed = 5;
+        //}
+        //else
+        //{
+        //    em.rate = em.rate.constant;
+        //    transform.rotation = Quaternion.Euler(20, 270, 0);
+        //}
+        ////ps.startSpeed = 2;
+        ////Debug.Log();
+        //preSpearz = spearz;
     }
 
     IEnumerator PS()

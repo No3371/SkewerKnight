@@ -33,11 +33,4 @@ public class Blood : MonoBehaviour {
                 break;
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-        float ChangTime;
-        float zindex;
-        zindex = GameManager.Instance.Spear.transform.localEulerAngles.z;
-    }
 }

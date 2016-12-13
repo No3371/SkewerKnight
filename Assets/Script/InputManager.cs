@@ -45,7 +45,7 @@ public class InputManager : MonoBehaviour {
             bind = false;
             bindup = true;
         }
-        if (Input.GetMouseButtonDown(0)) attack = true;
+        if (Input.GetMouseButtonDown(0) && !bind) attack = true;
 #endif
     }
     void MobileInput()
@@ -85,7 +85,7 @@ public class InputManager : MonoBehaviour {
     }
     void MobileHandle(Vector2 start , Vector2 end)
     {
-        if(start == end) attack = true;
+        if(start == end && !bind) attack = true;
         else if (Mathf.Abs(start.y - end.y) > Mathf.Abs(start.x - end.x))
         {
             if ((start.y - end.y) > 0 && bind) //下

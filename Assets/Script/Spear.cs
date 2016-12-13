@@ -34,7 +34,7 @@ public class Spear : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        Mangle = 0;
+        Mangle = 0; //mobile angle
         LeftSide = Screen.width / 2;
         BaseMouseY = Screen.height / 2;
         animator = GetComponent<Animator>();
@@ -56,11 +56,11 @@ public class Spear : MonoBehaviour {
             HorseFaceObj.SetActive(true);
             Eat();
         }
-        if ((Time.time - LastAttackTime > 0.43f))
+        if ((Time.time - LastAttackTime) > 0.43f)
         {
             if (!Lock && GameManager.Instance.IsPlayed && !GameManager.Instance.Busted)
             {
-                if (InputManager.Instance.attack)
+                if (InputManager.Instance.attack && (EatTime == 0))
                 {
                     InputManager.Instance.attack = false;
                     SpearSound.Play();
@@ -68,7 +68,11 @@ public class Spear : MonoBehaviour {
                     animator.SetTrigger("Push");
                     LastAttackTime = Time.time;
                 }
-                else Attacking = false;
+                else
+                {
+                    InputManager.Instance.attack = false;
+                    Attacking = false;
+                }
             }
         }
         else InputManager.Instance.attack = false;
@@ -100,7 +104,7 @@ public class Spear : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D other)
     {
-        if (Attacking)
+        if (Attacking && !InputManager.Instance.bind)
         {
             if (other.gameObject.layer == 9)
             {
@@ -154,7 +158,6 @@ public class Spear : MonoBehaviour {
             if (child.isStopped) child.Play();
             else child.Stop();
         }
-
     }
     void MobileUpdateAngle()
     {
